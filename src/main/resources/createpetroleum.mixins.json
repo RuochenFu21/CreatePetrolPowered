@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.forsteri.createpetroleum.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "createpetroleum.refmap.json",
+  "mixins": [
+    "MixinFluidTankBlock"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
