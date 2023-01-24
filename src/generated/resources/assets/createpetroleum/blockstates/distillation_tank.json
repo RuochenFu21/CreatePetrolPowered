@@ -1,21 +1,75 @@
 {
   "variants": {
-    "shape=plain": {
+    "bottom=false,shape=plain,top=false": {
+      "model": "createpetroleum:block/distillation_tank/block_middle"
+    },
+    "bottom=true,shape=plain,top=false": {
+      "model": "createpetroleum:block/distillation_tank/block_bottom"
+    },
+    "bottom=false,shape=window,top=false": {
+      "model": "createpetroleum:block/distillation_tank/block_middle_window"
+    },
+    "bottom=true,shape=window,top=false": {
+      "model": "createpetroleum:block/distillation_tank/block_bottom_window"
+    },
+    "bottom=false,shape=window_nw,top=false": {
+      "model": "createpetroleum:block/distillation_tank/block_middle_window_nw"
+    },
+    "bottom=true,shape=window_nw,top=false": {
+      "model": "createpetroleum:block/distillation_tank/block_bottom_window_nw"
+    },
+    "bottom=false,shape=window_sw,top=false": {
+      "model": "createpetroleum:block/distillation_tank/block_middle_window_sw"
+    },
+    "bottom=true,shape=window_sw,top=false": {
+      "model": "createpetroleum:block/distillation_tank/block_bottom_window_sw"
+    },
+    "bottom=false,shape=window_ne,top=false": {
+      "model": "createpetroleum:block/distillation_tank/block_middle_window_ne"
+    },
+    "bottom=true,shape=window_ne,top=false": {
+      "model": "createpetroleum:block/distillation_tank/block_bottom_window_ne"
+    },
+    "bottom=false,shape=window_se,top=false": {
+      "model": "createpetroleum:block/distillation_tank/block_middle_window_se"
+    },
+    "bottom=true,shape=window_se,top=false": {
+      "model": "createpetroleum:block/distillation_tank/block_bottom_window_se"
+    },
+    "bottom=false,shape=plain,top=true": {
+      "model": "createpetroleum:block/distillation_tank/block_top"
+    },
+    "bottom=true,shape=plain,top=true": {
       "model": "createpetroleum:block/distillation_tank/block_single"
     },
-    "shape=window": {
+    "bottom=false,shape=window,top=true": {
+      "model": "createpetroleum:block/distillation_tank/block_top_window"
+    },
+    "bottom=true,shape=window,top=true": {
       "model": "createpetroleum:block/distillation_tank/block_single_window"
     },
-    "shape=window_nw": {
+    "bottom=false,shape=window_nw,top=true": {
+      "model": "createpetroleum:block/distillation_tank/block_top_window_nw"
+    },
+    "bottom=true,shape=window_nw,top=true": {
       "model": "createpetroleum:block/distillation_tank/block_single_window_nw"
     },
-    "shape=window_sw": {
+    "bottom=false,shape=window_sw,top=true": {
+      "model": "createpetroleum:block/distillation_tank/block_top_window_sw"
+    },
+    "bottom=true,shape=window_sw,top=true": {
       "model": "createpetroleum:block/distillation_tank/block_single_window_sw"
     },
-    "shape=window_ne": {
+    "bottom=false,shape=window_ne,top=true": {
+      "model": "createpetroleum:block/distillation_tank/block_top_window_ne"
+    },
+    "bottom=true,shape=window_ne,top=true": {
       "model": "createpetroleum:block/distillation_tank/block_single_window_ne"
     },
-    "shape=window_se": {
+    "bottom=false,shape=window_se,top=true": {
+      "model": "createpetroleum:block/distillation_tank/block_top_window_se"
+    },
+    "bottom=true,shape=window_se,top=true": {
       "model": "createpetroleum:block/distillation_tank/block_single_window_se"
     }
   }

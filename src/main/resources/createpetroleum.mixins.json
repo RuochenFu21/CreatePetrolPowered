@@ -5,7 +5,7 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "createpetroleum.refmap.json",
   "mixins": [
-    "MixinFluidTankBlock"
+    "MixinFluidTankTileEntity"
   ],
   "client": [
   ],
