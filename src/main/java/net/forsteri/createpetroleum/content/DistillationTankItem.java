@@ -1,6 +1,5 @@
 package net.forsteri.createpetroleum.content;
 
-import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllTileEntities;
 import com.simibubi.create.api.connectivity.ConnectivityHandler;
 import com.simibubi.create.content.contraptions.fluids.tank.FluidTankBlock;
@@ -78,11 +77,17 @@ public class DistillationTankItem extends BlockItem {
 
         if (!FluidTankBlock.isTank(placedOnState))
             return;
-        boolean creative = getBlock().equals(AllBlocks.CREATIVE_FLUID_TANK.get());
-        boolean distill = getBlock().equals(Registration.DISTILLATION_TANK_BLOCK.get());
         FluidTankTileEntity tankAt = ConnectivityHandler.partAt(
-                creative ? AllTileEntities.CREATIVE_FLUID_TANK.get() : distill ? Registration.DISTILLATION_TANK_TILE_ENTITY.get() : AllTileEntities.FLUID_TANK.get(), world, placedOnPos
+                AllTileEntities.CREATIVE_FLUID_TANK.get(), world, placedOnPos
         );
+
+        if(tankAt == null) tankAt = ConnectivityHandler.partAt(
+                Registration.DISTILLATION_TANK_TILE_ENTITY.get(), world, placedOnPos
+        );
+        if(tankAt == null) tankAt = ConnectivityHandler.partAt(
+                AllTileEntities.FLUID_TANK.get(), world, placedOnPos
+        );
+
         if (tankAt == null)
             return;
         FluidTankTileEntity controllerTE = tankAt.getControllerTE();
