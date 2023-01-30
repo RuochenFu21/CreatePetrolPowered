@@ -1,4 +1,4 @@
-package net.forsteri.createpetroleum.content;
+package net.forsteri.createpetroleum.content.distillation;
 
 import com.simibubi.create.AllTileEntities;
 import com.simibubi.create.api.connectivity.ConnectivityHandler;

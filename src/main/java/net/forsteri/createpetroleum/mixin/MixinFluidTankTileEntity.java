@@ -9,7 +9,7 @@ import com.simibubi.create.foundation.tileEntity.IMultiTileContainer;
 import com.simibubi.create.foundation.tileEntity.SmartTileEntity;
 import net.forsteri.createindustrialchemistry.entry.registers.substances.GasSubstances;
 import net.forsteri.createindustrialchemistry.entry.registers.substances.LiquidSubstances;
-import net.forsteri.createpetroleum.content.DistillationTankTileEntity;
+import net.forsteri.createpetroleum.content.distillation.DistillationTankTileEntity;
 import net.forsteri.createpetroleum.entry.Registration;
 import net.forsteri.createpetroleum.util.HeatLevels;
 import net.minecraft.core.BlockPos;
@@ -138,8 +138,11 @@ public abstract class MixinFluidTankTileEntity extends SmartTileEntity implement
         for(int i = 0; i < 6; ++i) {
             for(int j = 0; j < 6; ++j) {
                 assert this.level != null;
-                FluidTankTileEntity fluidTankTileEntity = ((FluidTankTileEntity) this.level.getBlockEntity(this.getBlockPos().offset(i - 2, 0, j - 2)));
-                if(fluidTankTileEntity != null && this.getControllerTE() != null && fluidTankTileEntity.getControllerTE() == this.getControllerTE()) tanks.add(fluidTankTileEntity);
+
+                if(!(this.level.getBlockEntity(this.getBlockPos().offset(i - 2, 0, j - 2)) instanceof FluidTankTileEntity fluidTankTileEntity))
+                    continue;
+
+                if(this.getControllerTE() != null && fluidTankTileEntity.getControllerTE() == this.getControllerTE()) tanks.add(fluidTankTileEntity);
             }
         }
         return tanks;

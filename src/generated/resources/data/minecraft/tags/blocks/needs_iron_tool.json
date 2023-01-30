@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "createpetroleum:distillation_tank",
     "createpetroleum:kinetic_input",
     "createpetroleum:ghost",
     "createpetroleum:fluid_output",

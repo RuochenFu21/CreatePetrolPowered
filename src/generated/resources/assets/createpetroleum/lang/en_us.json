@@ -1,3 +1,7 @@
 {
-  "block.createpetroleum.distillation_tank": "Distillation Tank"
+  "block.createpetroleum.distillation_tank": "Distillation Tank",
+  "block.createpetroleum.fluid_output": "Multiblock",
+  "block.createpetroleum.ghost": "Multiblock",
+  "block.createpetroleum.kinetic_input": "Multiblock Rotational Input",
+  "block.createpetroleum.master": "Multiblock"
 }

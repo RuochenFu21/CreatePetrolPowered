@@ -1,4 +1,4 @@
-package net.forsteri.createpetroleum.content;
+package net.forsteri.createpetroleum.content.distillation;
 
 import com.simibubi.create.content.contraptions.fluids.tank.FluidTankBlock;
 import com.simibubi.create.content.contraptions.fluids.tank.FluidTankTileEntity;
