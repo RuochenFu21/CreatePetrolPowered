@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "createpetroleum:block/multiblock_ghost"
+    }
+  }
+}
