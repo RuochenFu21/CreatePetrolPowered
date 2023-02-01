@@ -4,12 +4,15 @@ import com.simibubi.create.content.contraptions.base.KineticTileEntity;
 import com.simibubi.create.foundation.tileEntity.SmartTileEntity;
 import net.forsteri.createpetroleum.content.oilRig.util.ISlaveTileEntity;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Function;
 
 import static net.minecraft.world.level.block.HorizontalDirectionalBlock.FACING;
 
@@ -51,25 +54,41 @@ public class MasterTileEntity extends KineticTileEntity {
         }
     }
 
-//    @Override
-//    protected void write(CompoundTag compound, boolean clientPacket) {
-//        compound.putIntArray("slaveTileEntitiesX", slaveTileEntities.stream().mapToInt(tileEntity -> tileEntity.getBlockPos().getX()).toArray());
-//        compound.putIntArray("slaveTileEntitiesY", slaveTileEntities.stream().mapToInt(tileEntity -> tileEntity.getBlockPos().getY()).toArray());
-//        compound.putIntArray("slaveTileEntitiesZ", slaveTileEntities.stream().mapToInt(tileEntity -> tileEntity.getBlockPos().getZ()).toArray());
-//        super.write(compound, clientPacket);
-//    }
-//
-//    @Override
-//    protected void read(CompoundTag compound, boolean clientPacket) {
-//        if(compound.contains("slaveTileEntitiesX") && compound.contains("slaveTileEntitiesY") && compound.contains("slaveTileEntitiesZ"))
-//            for (int i = 0; i < compound.getIntArray("slaveTileEntitiesX").length; i++)
-//                slaveTileEntities.add(
-//                        (SmartTileEntity)
-//                                level.getBlockEntity(new BlockPos(
-//                                        compound.getIntArray("slaveTileEntitiesX")[i],
-//                                        compound.getIntArray("slaveTileEntitiesY")[i],
-//                                        compound.getIntArray("slaveTileEntitiesZ")[i])));
-//
-//        super.read(compound, clientPacket);
-//    }
+    @Override
+    protected void write(CompoundTag compound, boolean clientPacket) {
+        compound.putIntArray("slaveTileEntitiesX", slaveTileEntities.stream().mapToInt(tileEntity -> tileEntity.getBlockPos().getX()).toArray());
+        compound.putIntArray("slaveTileEntitiesY", slaveTileEntities.stream().mapToInt(tileEntity -> tileEntity.getBlockPos().getY()).toArray());
+        compound.putIntArray("slaveTileEntitiesZ", slaveTileEntities.stream().mapToInt(tileEntity -> tileEntity.getBlockPos().getZ()).toArray());
+        super.write(compound, clientPacket);
+    }
+
+    @Override
+    protected void read(CompoundTag compound, boolean clientPacket) {
+        if(compound.contains("slaveTileEntitiesX") && compound.contains("slaveTileEntitiesY") && compound.contains("slaveTileEntitiesZ"))
+            slaveTileEntitiesGetter = (level) ->
+        {
+            List<SmartTileEntity> ret = new ArrayList<>();
+            for (int i = 0; i < compound.getIntArray("slaveTileEntitiesX").length; i++)
+                ret.add(
+                        (SmartTileEntity)
+                                level.getBlockEntity(new BlockPos(
+                                        compound.getIntArray("slaveTileEntitiesX")[i],
+                                        compound.getIntArray("slaveTileEntitiesY")[i],
+                                        compound.getIntArray("slaveTileEntitiesZ")[i])));
+            return ret;
+        };
+
+        super.read(compound, clientPacket);
+    }
+
+    public Function<Level,List<SmartTileEntity>> slaveTileEntitiesGetter;
+
+    @Override
+    public void tick() {
+        if(slaveTileEntitiesGetter != null && slaveTileEntities.isEmpty()) {
+            slaveTileEntities = slaveTileEntitiesGetter.apply(level);
+            slaveTileEntitiesGetter = null;
+        }
+        super.tick();
+    }
 }

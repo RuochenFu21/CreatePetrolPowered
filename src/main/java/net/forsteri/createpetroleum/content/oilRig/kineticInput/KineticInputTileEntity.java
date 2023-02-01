@@ -5,10 +5,12 @@ import net.forsteri.createpetroleum.content.oilRig.master.MasterTileEntity;
 import net.forsteri.createpetroleum.content.oilRig.util.ISlaveTileEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.Objects;
+import java.util.function.Function;
 
 public class KineticInputTileEntity extends KineticTileEntity implements ISlaveTileEntity {
 
@@ -29,7 +31,7 @@ public class KineticInputTileEntity extends KineticTileEntity implements ISlaveT
     }
 
     @Override
-    public void destroy() {
+    public void remove() {
         super.destroy();
         ISlaveTileEntity.super.onRemove();
     }
@@ -47,11 +49,22 @@ public class KineticInputTileEntity extends KineticTileEntity implements ISlaveT
     @Override
     protected void read(CompoundTag tag, boolean clientPacket) {
         if(tag.contains("masterX") && tag.contains("masterY") && tag.contains("masterZ"))
-            masterTileEntity = (MasterTileEntity) Objects.requireNonNull(level).getBlockEntity(new BlockPos(tag.getInt("masterX"), tag.getInt("masterY"), tag.getInt("masterZ")));
-        else {
-            assert level != null;
-            level.destroyBlock(getBlockPos(), false);
-        }
+            masterTileEntitySupplier = (level) -> (MasterTileEntity) Objects.requireNonNull(level)
+                    .getBlockEntity(new BlockPos(
+                            tag.getInt("masterX"),
+                            tag.getInt("masterY"),
+                            tag.getInt("masterZ")));
         super.read(tag, clientPacket);
+    }
+
+    private Function<Level, MasterTileEntity> masterTileEntitySupplier;
+
+    @Override
+    public void tick() {
+        super.tick();
+        if(masterTileEntity == null && masterTileEntitySupplier != null){
+            masterTileEntity = masterTileEntitySupplier.apply(level);
+            masterTileEntitySupplier = null;
+        }
     }
 }
