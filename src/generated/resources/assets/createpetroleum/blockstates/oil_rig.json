@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "createpetroleum:block/oil_rig"
+    },
+    "facing=south": {
+      "model": "createpetroleum:block/oil_rig",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "createpetroleum:block/oil_rig",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "createpetroleum:block/oil_rig",
+      "y": 90
+    }
+  }
+}

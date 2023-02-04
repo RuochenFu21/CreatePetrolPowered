@@ -1,9 +1,9 @@
 package net.forsteri.createpetroleum.entry;
 
+import com.jozufozu.flywheel.core.PartialModel;
 import com.simibubi.create.content.contraptions.fluids.tank.FluidTankGenerator;
 import com.simibubi.create.content.contraptions.fluids.tank.FluidTankModel;
 import com.simibubi.create.content.contraptions.fluids.tank.FluidTankRenderer;
-import com.simibubi.create.content.contraptions.relays.encased.ShaftInstance;
 import com.simibubi.create.foundation.block.BlockStressDefaults;
 import com.simibubi.create.foundation.data.AssetLookup;
 import com.simibubi.create.foundation.data.CreateRegistrate;
@@ -21,10 +21,12 @@ import net.forsteri.createpetroleum.content.oilRig.fluidOutput.FluidOutputTileEn
 import net.forsteri.createpetroleum.content.oilRig.ghost.GhostBlock;
 import net.forsteri.createpetroleum.content.oilRig.ghost.GhostTileEntity;
 import net.forsteri.createpetroleum.content.oilRig.kineticInput.KineticInputBlock;
+import net.forsteri.createpetroleum.content.oilRig.kineticInput.KineticInputInstance;
 import net.forsteri.createpetroleum.content.oilRig.kineticInput.KineticInputTileEntity;
 import net.forsteri.createpetroleum.content.oilRig.master.MasterBlock;
 import net.forsteri.createpetroleum.content.oilRig.master.MasterTileEntity;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 
@@ -58,15 +60,14 @@ public class Registration {
             .transform(BlockStressDefaults.setImpact(8))
             .tag(BlockTags.NEEDS_IRON_TOOL)
             .transform(TagGen.pickaxeOnly())
-            .blockstate((ctx, prov) -> prov.simpleBlock(ctx.getEntry(), prov.models().getBuilder("kinetic_in")
-    //        .texture("particle", new ResourceLocation("create","block/brass_casing"))
-            ))
+            .addLayer(() -> RenderType::translucent)
+            .blockstate((ctx, prov) -> prov.simpleBlock(ctx.getEntry(), prov.models().getExistingFile(new ResourceLocation("createpetroleum:multiblock_ghost"))))
             .lang("Multiblock Rotational Input")
             .register();
 
     public static final BlockEntityEntry<KineticInputTileEntity> KINETIC_INPUT_TILE_ENTITY = REGISTRATE
             .tileEntity("kinetic_input", KineticInputTileEntity::new)
-            .instance(() -> ShaftInstance::new)
+            .instance(() -> KineticInputInstance::new)
             .validBlocks(KINETIC_INPUT_BLOCK)
             .register();
 
@@ -75,9 +76,8 @@ public class Registration {
             .properties(BlockBehaviour.Properties::noOcclusion)
             .tag(BlockTags.NEEDS_IRON_TOOL)
             .transform(TagGen.pickaxeOnly())
-            .blockstate((ctx, prov) -> prov.simpleBlock(ctx.getEntry(), prov.models().getBuilder("multiblock_ghost")
-    //        .texture("particle", new ResourceLocation("create:block/brass_casing"))
-            ))
+            .addLayer(() -> RenderType::cutoutMipped)
+            .blockstate((ctx, prov) -> prov.simpleBlock(ctx.getEntry(), prov.models().getExistingFile(new ResourceLocation("createpetroleum:multiblock_ghost"))))
             .lang("Multiblock")
             .register();
 
@@ -91,9 +91,8 @@ public class Registration {
             .properties(BlockBehaviour.Properties::noOcclusion)
             .tag(BlockTags.NEEDS_IRON_TOOL)
             .transform(TagGen.pickaxeOnly())
-            .blockstate((ctx, prov) -> prov.simpleBlock(ctx.getEntry(), prov.models().getBuilder("multiblock_ghost")
-    //        .texture("particle", new ResourceLocation("create:block/brass_casing"))
-            ))
+            .addLayer(() -> RenderType::translucent)
+            .blockstate((ctx, prov) -> prov.simpleBlock(ctx.getEntry(), prov.models().getExistingFile(new ResourceLocation("createpetroleum:multiblock_ghost"))))
             .lang("Multiblock")
             .register();
 
@@ -102,23 +101,24 @@ public class Registration {
             .validBlocks(FLUID_OUTPUT_BLOCK)
             .register();
 
-    public static final BlockEntry<MasterBlock> MASTER_BLOCK = REGISTRATE.block("master", MasterBlock::new)
+    public static final BlockEntry<MasterBlock> MASTER_BLOCK = REGISTRATE.block("oil_rig", MasterBlock::new)
             .initialProperties(SharedProperties::copperMetal)
             .properties(BlockBehaviour.Properties::noOcclusion)
             .tag(BlockTags.NEEDS_IRON_TOOL)
             .transform(TagGen.pickaxeOnly())
-            .blockstate((ctx, prov) -> prov.simpleBlock(ctx.getEntry(), prov.models().getBuilder("multiblock_ghost")
-    //        .texture("particle", new ResourceLocation("create:block/brass_casing"))
-            ))
-            .lang("Multiblock")
+            .blockstate((ctx, prov) -> prov.horizontalBlock(ctx.getEntry(), prov.models().getExistingFile(new ResourceLocation("createpetroleum:oil_rig"))))
+            .lang("Drilling Rig")
             .item(OilRigItem::new)
             .build()
+            .addLayer(() -> RenderType::cutoutMipped)
             .register();
 
     public static final BlockEntityEntry<MasterTileEntity> MASTER_TILE_ENTITY = REGISTRATE
-            .tileEntity("master", MasterTileEntity::new)
+            .tileEntity("oil_rig", MasterTileEntity::new)
             .validBlocks(MASTER_BLOCK)
             .register();
+
+    public static final PartialModel ROTATING_PART = new PartialModel(new ResourceLocation("createpetroleum", "block/rotating_part"));
 
     public static void register() {}
 }

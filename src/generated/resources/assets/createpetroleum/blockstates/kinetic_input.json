@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "createpetroleum:block/kinetic_in"
+      "model": "createpetroleum:block/multiblock_ghost"
     }
   }
 }

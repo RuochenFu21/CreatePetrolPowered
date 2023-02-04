@@ -4,6 +4,6 @@
     "createpetroleum:kinetic_input",
     "createpetroleum:ghost",
     "createpetroleum:fluid_output",
-    "createpetroleum:master"
+    "createpetroleum:oil_rig"
   ]
 }
