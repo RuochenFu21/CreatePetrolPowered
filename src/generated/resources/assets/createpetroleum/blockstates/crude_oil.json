@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "createpetroleum:block/crude_oil"
+    }
+  }
+}

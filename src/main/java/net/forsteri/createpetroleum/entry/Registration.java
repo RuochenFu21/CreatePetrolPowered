@@ -11,6 +11,7 @@ import com.simibubi.create.foundation.data.SharedProperties;
 import com.simibubi.create.foundation.data.TagGen;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import com.tterrag.registrate.util.entry.FluidEntry;
 import net.forsteri.createpetroleum.CreatePetroleum;
 import net.forsteri.createpetroleum.content.distillation.DistillationTankBlock;
 import net.forsteri.createpetroleum.content.distillation.DistillationTankItem;
@@ -26,9 +27,14 @@ import net.forsteri.createpetroleum.content.oilRig.kineticInput.KineticInputTile
 import net.forsteri.createpetroleum.content.oilRig.master.MasterBlock;
 import net.forsteri.createpetroleum.content.oilRig.master.MasterTileEntity;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraftforge.fluids.FluidAttributes;
+import net.minecraftforge.fluids.ForgeFlowingFluid;
 
 import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
 
@@ -110,7 +116,7 @@ public class Registration {
             .lang("Drilling Rig")
             .item(OilRigItem::new)
             .build()
-            .addLayer(() -> RenderType::cutoutMipped)
+            .addLayer(() -> RenderType::translucent)
             .register();
 
     public static final BlockEntityEntry<MasterTileEntity> MASTER_TILE_ENTITY = REGISTRATE
@@ -119,6 +125,34 @@ public class Registration {
             .register();
 
     public static final PartialModel ROTATING_PART = new PartialModel(new ResourceLocation("createpetroleum", "block/rotating_part"));
+
+    public static final FluidEntry<ForgeFlowingFluid.Flowing> CRUDE_OIL =
+            REGISTRATE.standardFluid("crude_oil", NoColorFluidAttributes::new)
+                    .lang("Crude Oil")
+                    .attributes(b -> b.viscosity(2000)
+                            .density(1400))
+                    .properties(p -> p.levelDecreasePerBlock(2)
+                            .tickRate(25)
+                            .slopeFindDistance(3)
+                            .explosionResistance(100f))
+                    .source(ForgeFlowingFluid.Source::new)
+                    .bucket()
+                    .build()
+                    .register();
+
+
+    private static class NoColorFluidAttributes extends FluidAttributes {
+
+        protected NoColorFluidAttributes(Builder builder, Fluid fluid) {
+            super(builder, fluid);
+        }
+
+        @Override
+        public int getColor(BlockAndTintGetter world, BlockPos pos) {
+            return 0x00ffffff;
+        }
+
+    }
 
     public static void register() {}
 }
