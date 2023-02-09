@@ -1,11 +1,19 @@
 package net.forsteri.createpetroleum.content.oilRig.master;
 
 import com.simibubi.create.content.contraptions.base.KineticTileEntity;
+import com.simibubi.create.content.contraptions.goggles.IHaveGoggleInformation;
 import com.simibubi.create.foundation.tileEntity.SmartTileEntity;
+import com.simibubi.create.foundation.tileEntity.TileEntityBehaviour;
 import net.forsteri.createpetroleum.content.oilRig.util.ISlaveTileEntity;
+import net.forsteri.createpetroleum.entry.Registration;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -16,10 +24,16 @@ import java.util.function.Function;
 
 import static net.minecraft.world.level.block.HorizontalDirectionalBlock.FACING;
 
-public class MasterTileEntity extends KineticTileEntity {
+@SuppressWarnings("deprecation")
+public class MasterTileEntity extends SmartTileEntity implements IHaveGoggleInformation {
 
     public MasterTileEntity(BlockEntityType<?> typeIn, BlockPos pos, BlockState state) {
         super(typeIn, pos, state);
+    }
+
+    @Override
+    public void addBehaviours(List<TileEntityBehaviour> behaviours) {
+
     }
 
     List<SmartTileEntity> slaveTileEntities = new ArrayList<>();
@@ -90,5 +104,74 @@ public class MasterTileEntity extends KineticTileEntity {
             slaveTileEntitiesGetter = null;
         }
         super.tick();
+    }
+
+    @Override
+    public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
+
+        boolean haveSpeed = false;
+
+        if(!supportBiome())
+            tooltip.add(componentSpacing.plainCopy()
+                    .append(
+                            Registration.BIOME_NOT_SUPPORTED));
+        for (SmartTileEntity slaveTileEntity : slaveTileEntities) {
+            if(slaveTileEntity instanceof KineticTileEntity){
+                if(((KineticTileEntity) slaveTileEntity).getSpeed() == 0){
+                    tooltip.add(Registration.NO_SPEED);
+                    haveSpeed = true;
+                    break;
+                }
+            }
+        }
+
+        return !supportBiome() || !haveSpeed;
+    }
+
+    @SuppressWarnings("unused")
+    public boolean canBeUsed(){
+        return supportBiome() || haveSpeed();
+    }
+
+    public boolean supportBiome(){
+        List<ResourceKey<Biome>> supportedBiomes = new ArrayList<>();
+        supportedBiomes.add(Biomes.DESERT);
+        supportedBiomes.add(Biomes.BADLANDS);
+        supportedBiomes.add(Biomes.ERODED_BADLANDS);
+        supportedBiomes.add(Biomes.WOODED_BADLANDS);
+        supportedBiomes.add(Biomes.SNOWY_BEACH);
+        supportedBiomes.add(Biomes.SNOWY_PLAINS);
+        supportedBiomes.add(Biomes.SNOWY_TAIGA);
+        supportedBiomes.add(Biomes.SNOWY_SLOPES);
+
+        assert level != null;
+        Holder<Biome> biome = level.getBiome(worldPosition);
+
+        boolean isSupportedBiome = false;
+
+        for (ResourceKey<Biome> supportedBiome : supportedBiomes
+        ) {
+            if(biome.is(supportedBiome)) {
+                isSupportedBiome = true;
+                break;
+            }
+        }
+
+        return isSupportedBiome;
+    }
+
+    public boolean haveSpeed(){
+        boolean haveSpeed = false;
+
+        for (SmartTileEntity slaveTileEntity : slaveTileEntities) {
+            if(slaveTileEntity instanceof KineticTileEntity){
+                if(((KineticTileEntity) slaveTileEntity).getSpeed() == 0){
+                    haveSpeed = true;
+                    break;
+                }
+            }
+        }
+
+        return haveSpeed;
     }
 }

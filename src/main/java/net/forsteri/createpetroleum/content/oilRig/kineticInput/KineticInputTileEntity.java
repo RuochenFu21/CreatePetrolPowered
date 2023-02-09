@@ -5,10 +5,12 @@ import net.forsteri.createpetroleum.content.oilRig.master.MasterTileEntity;
 import net.forsteri.createpetroleum.content.oilRig.util.ISlaveTileEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
 
@@ -66,5 +68,11 @@ public class KineticInputTileEntity extends KineticTileEntity implements ISlaveT
             masterTileEntity = masterTileEntitySupplier.apply(level);
             masterTileEntitySupplier = null;
         }
+    }
+
+    @Override
+    public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
+        return ISlaveTileEntity.super.addToGoggleTooltip(tooltip, isPlayerSneaking) &&
+                super.addToGoggleTooltip(tooltip, isPlayerSneaking);
     }
 }

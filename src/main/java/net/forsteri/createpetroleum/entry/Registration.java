@@ -28,6 +28,7 @@ import net.forsteri.createpetroleum.content.oilRig.master.MasterBlock;
 import net.forsteri.createpetroleum.content.oilRig.master.MasterTileEntity;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.BlockAndTintGetter;
@@ -38,6 +39,7 @@ import net.minecraftforge.fluids.ForgeFlowingFluid;
 
 import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
 
+@SuppressWarnings("unused")
 public class Registration {
     private static final CreateRegistrate REGISTRATE = CreatePetroleum.registrate()
             .get().creativeModeTab(() -> CreativeModMenu.CREATIVE_MODE_TAB);
@@ -153,6 +155,10 @@ public class Registration {
         }
 
     }
+
+    public static TranslatableComponent BIOME_NOT_SUPPORTED = REGISTRATE.addRawLang("tooltip.createpetroleum.oil_rig.biome_not_supported", "This biome is not supported by the oil rig");
+
+    public static TranslatableComponent NO_SPEED = REGISTRATE.addRawLang("tooltip.createpetroleum.oil_rig.not_rotating", "Not Rotating");
 
     public static void register() {}
 }
