@@ -4,6 +4,7 @@ import com.simibubi.create.content.contraptions.base.KineticTileEntity;
 import com.simibubi.create.content.contraptions.goggles.IHaveGoggleInformation;
 import com.simibubi.create.foundation.tileEntity.SmartTileEntity;
 import com.simibubi.create.foundation.tileEntity.TileEntityBehaviour;
+import net.forsteri.createpetroleum.content.oilRig.fluidOutput.FluidOutputTileEntity;
 import net.forsteri.createpetroleum.content.oilRig.util.ISlaveTileEntity;
 import net.forsteri.createpetroleum.entry.Registration;
 import net.minecraft.core.BlockPos;
@@ -16,6 +17,8 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -104,6 +107,11 @@ public class MasterTileEntity extends SmartTileEntity implements IHaveGoggleInfo
             slaveTileEntitiesGetter = null;
         }
         super.tick();
+        if(canBeUsed())
+            for(SmartTileEntity slaveTileEntity : slaveTileEntities)
+                if(slaveTileEntity instanceof FluidOutputTileEntity)
+                    ((FluidOutputTileEntity) slaveTileEntity).getInventory().fill(new FluidStack(Registration.CRUDE_OIL.get(), 10), IFluidHandler.FluidAction.EXECUTE);
+
     }
 
     @Override
@@ -128,7 +136,6 @@ public class MasterTileEntity extends SmartTileEntity implements IHaveGoggleInfo
         return !supportBiome() || !haveSpeed;
     }
 
-    @SuppressWarnings("unused")
     public boolean canBeUsed(){
         return supportBiome() || haveSpeed();
     }
@@ -157,7 +164,9 @@ public class MasterTileEntity extends SmartTileEntity implements IHaveGoggleInfo
             }
         }
 
-        return isSupportedBiome;
+        return isSupportedBiome
+        //        || true
+                ;
     }
 
     public boolean haveSpeed(){
