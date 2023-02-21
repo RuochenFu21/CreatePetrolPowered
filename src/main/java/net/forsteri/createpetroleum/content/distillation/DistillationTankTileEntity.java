@@ -7,6 +7,12 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class DistillationTankTileEntity extends FluidTankTileEntity {
+    private static final Object recipesKey = new Object();
+
+    public static Object getRecipeCacheKey() {
+        return recipesKey;
+    }
+
     public DistillationTankTileEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }

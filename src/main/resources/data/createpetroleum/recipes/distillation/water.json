@@ -1,0 +1,20 @@
+{
+  "type": "createpetroleum:fractional_distillation",
+  "ingredients": [
+    {
+      "fluid": "minecraft:water",
+      "amount": 10
+    }
+  ],
+  "results": [
+    {
+      "fluid": "createindustrialchemistry:molten_salt",
+      "amount": 3
+    },
+    {
+      "fluid": "createindustrialchemistry:water_vapor",
+      "amount": 7
+    }
+  ],
+  "heatRequirement": "superheated"
+}
