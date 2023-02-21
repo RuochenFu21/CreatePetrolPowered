@@ -117,27 +117,21 @@ public class MasterTileEntity extends SmartTileEntity implements IHaveGoggleInfo
     @Override
     public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
 
-        boolean haveSpeed = false;
 
         if(!supportBiome())
             tooltip.add(componentSpacing.plainCopy()
                     .append(
                             Registration.BIOME_NOT_SUPPORTED));
-        for (SmartTileEntity slaveTileEntity : slaveTileEntities) {
-            if(slaveTileEntity instanceof KineticTileEntity){
-                if(((KineticTileEntity) slaveTileEntity).getSpeed() == 0){
-                    tooltip.add(Registration.NO_SPEED);
-                    haveSpeed = true;
-                    break;
-                }
-            }
-        }
+        if(!haveSpeed())
+            tooltip.add(componentSpacing.plainCopy()
+                    .append(
+                            Registration.NO_SPEED));
 
-        return !supportBiome() || !haveSpeed;
+        return !supportBiome() || !haveSpeed();
     }
 
     public boolean canBeUsed(){
-        return supportBiome() || haveSpeed();
+        return supportBiome() && haveSpeed();
     }
 
     public boolean supportBiome(){
@@ -174,7 +168,7 @@ public class MasterTileEntity extends SmartTileEntity implements IHaveGoggleInfo
 
         for (SmartTileEntity slaveTileEntity : slaveTileEntities) {
             if(slaveTileEntity instanceof KineticTileEntity){
-                if(((KineticTileEntity) slaveTileEntity).getSpeed() == 0){
+                if(((KineticTileEntity) slaveTileEntity).getSpeed() != 0){
                     haveSpeed = true;
                     break;
                 }
