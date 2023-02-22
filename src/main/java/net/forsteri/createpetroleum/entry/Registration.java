@@ -160,5 +160,7 @@ public class Registration {
 
     public static TranslatableComponent NO_SPEED = REGISTRATE.addRawLang("tooltip.createpetroleum.oil_rig.not_rotating", "Not Rotating");
 
+    public static TranslatableComponent MENU = REGISTRATE.addRawLang("itemGroup.createpetroleum", "Create: Petro Powered");
+
     public static void register() {}
 }

@@ -1,4 +1,6 @@
 {
+  "itemGroup.createpetroleum": "机械动力：石油纪元",
+
   "block.createpetroleum.crude_oil": "石油",
   "block.createpetroleum.distillation_tank": "分馏储罐",
   "block.createpetroleum.fluid_output": "流体输出",
