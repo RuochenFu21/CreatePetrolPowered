@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "createpetroleum:flowing_crude_oil",
-    "createpetroleum:crude_oil"
+    "createpetrolpowered:flowing_crude_oil",
+    "createpetrolpowered:crude_oil"
   ]
 }

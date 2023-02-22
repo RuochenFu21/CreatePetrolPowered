@@ -23,9 +23,9 @@ apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 version = mod_version
-group = 'com.forsteri.createpetroleum' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = 'com.forsteri.createpetrolpowered' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 //noinspection GroovyUnusedAssignment
-archivesBaseName = 'createpetroleum'
+archivesBaseName = 'createpetrolpowered'
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -69,10 +69,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'createpetroleum'
+            property 'forge.enabledGameTestNamespaces', 'createpetrolpowered'
 
             mods {
-                createpetroleum {
+                createpetrolpowered {
                     source sourceSets.main
                 }
             }
@@ -86,10 +86,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'createpetroleum'
+            property 'forge.enabledGameTestNamespaces', 'createpetrolpowered'
 
             mods {
-                createpetroleum {
+                createpetrolpowered {
                     source sourceSets.main
                 }
             }
@@ -114,10 +114,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'createpetroleum'
+            property 'forge.enabledGameTestNamespaces', 'createpetrolpowered'
 
             mods {
-                createpetroleum {
+                createpetrolpowered {
                     source sourceSets.main
                 }
             }
@@ -130,11 +130,11 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            // Specify the createpetroleum for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'createpetroleum', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            // Specify the createpetrolpowered for data generation, where to output the resulting resource, and where to look for existing resources.
+            args '--mod', 'createpetrolpowered', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                createpetroleum {
+                createpetrolpowered {
                     source sourceSets.main
                 }
             }
@@ -202,12 +202,12 @@ dependencies {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "createpetroleum",
-                "Specification-Vendor"    : "createpetroleumsareus",
+                "Specification-Title"     : "createpetrolpowered",
+                "Specification-Vendor"    : "createpetrolpoweredsareus",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "createpetroleumsareus",
+                "Implementation-Vendor"   : "createpetrolpoweredsareus",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
@@ -232,7 +232,9 @@ publishing {
     }
 }
 mixin {
-    config "createpetroleum.mixins.json"
+    add sourceSets.main, "createpetrolpowered.refmap.json"
+
+    config "createpetrolpowered.mixins.json"
 }
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation

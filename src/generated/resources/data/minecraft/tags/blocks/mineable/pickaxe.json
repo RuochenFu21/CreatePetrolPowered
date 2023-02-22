@@ -1,10 +1,10 @@
 {
   "replace": false,
   "values": [
-    "createpetroleum:distillation_tank",
-    "createpetroleum:kinetic_input",
-    "createpetroleum:ghost",
-    "createpetroleum:fluid_output",
-    "createpetroleum:oil_rig"
+    "createpetrolpowered:distillation_tank",
+    "createpetrolpowered:kinetic_input",
+    "createpetrolpowered:ghost",
+    "createpetrolpowered:fluid_output",
+    "createpetrolpowered:oil_rig"
   ]
 }

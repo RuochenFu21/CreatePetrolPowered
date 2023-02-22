@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.forsteri.createpetrolpowered.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "createpetrolpowered.refmap.json",
+  "mixins": [
+    "MixinFluidTankTileEntity"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
