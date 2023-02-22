@@ -22,6 +22,6 @@ public interface ISlaveTileEntity extends IHaveGoggleInformation {
 
     @Override
     default boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
-        return getMasterTileEntity().addToGoggleTooltip(tooltip, isPlayerSneaking);
+        return getMasterTileEntity() != null && getMasterTileEntity().addToGoggleTooltip(tooltip, isPlayerSneaking);
     }
 }

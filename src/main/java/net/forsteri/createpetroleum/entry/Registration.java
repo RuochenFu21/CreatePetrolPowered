@@ -5,10 +5,7 @@ import com.simibubi.create.content.contraptions.fluids.tank.FluidTankGenerator;
 import com.simibubi.create.content.contraptions.fluids.tank.FluidTankModel;
 import com.simibubi.create.content.contraptions.fluids.tank.FluidTankRenderer;
 import com.simibubi.create.foundation.block.BlockStressDefaults;
-import com.simibubi.create.foundation.data.AssetLookup;
-import com.simibubi.create.foundation.data.CreateRegistrate;
-import com.simibubi.create.foundation.data.SharedProperties;
-import com.simibubi.create.foundation.data.TagGen;
+import com.simibubi.create.foundation.data.*;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.FluidEntry;
@@ -37,6 +34,7 @@ import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 
+import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
 
 @SuppressWarnings("unused")
@@ -117,7 +115,7 @@ public class Registration {
             .blockstate((ctx, prov) -> prov.horizontalBlock(ctx.getEntry(), prov.models().getExistingFile(new ResourceLocation("createpetroleum:oil_rig"))))
             .lang("Drilling Rig")
             .item(OilRigItem::new)
-            .build()
+            .transform(customItemModel())
             .addLayer(() -> RenderType::translucent)
             .register();
 
@@ -141,6 +139,8 @@ public class Registration {
                     .bucket()
                     .build()
                     .register();
+
+
 
 
     private static class NoColorFluidAttributes extends FluidAttributes {
