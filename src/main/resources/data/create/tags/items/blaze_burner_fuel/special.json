@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "createpetrolpowered:crude_oil_bucket",
+    "createpetrolpowered:fuel_oil_bucket"
+  ]
+}

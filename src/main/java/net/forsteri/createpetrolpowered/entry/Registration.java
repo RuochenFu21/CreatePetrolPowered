@@ -10,6 +10,7 @@ import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.FluidEntry;
 import net.forsteri.createpetrolpowered.CreatePetrolPowered;
+import net.forsteri.createpetrolpowered.content.BurnableOilBucket;
 import net.forsteri.createpetrolpowered.content.distillation.DistillationTankBlock;
 import net.forsteri.createpetrolpowered.content.distillation.DistillationTankItem;
 import net.forsteri.createpetrolpowered.content.distillation.DistillationTankTileEntity;
@@ -136,7 +137,7 @@ public class Registration {
                             .slopeFindDistance(3)
                             .explosionResistance(100f))
                     .source(ForgeFlowingFluid.Source::new)
-                    .bucket()
+                    .bucket(BurnableOilBucket::new)
                     .model((ctx, prov) -> prov.withExistingParent(ctx.getName(), new ResourceLocation("item/generated"))
                             .texture("layer0", new ResourceLocation(CreatePetrolPowered.MODID, "item/oil_bucket")))
                     .build()
@@ -152,7 +153,7 @@ public class Registration {
                             .slopeFindDistance(3)
                             .explosionResistance(100f))
                     .source(ForgeFlowingFluid.Source::new)
-                    .bucket()
+                    .bucket(BurnableOilBucket::new)
                     .model((ctx, prov) -> prov.withExistingParent(ctx.getName(), new ResourceLocation("item/generated"))
                             .texture("layer0", new ResourceLocation(CreatePetrolPowered.MODID, "item/oil_bucket")))
                     .build()
