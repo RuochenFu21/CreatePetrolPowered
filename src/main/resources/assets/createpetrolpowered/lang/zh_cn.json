@@ -4,10 +4,12 @@
   "block.createpetrolpowered.crude_oil": "石油",
   "block.createpetrolpowered.distillation_tank": "分馏储罐",
   "block.createpetrolpowered.fluid_output": "流体输出",
+  "block.createpetrolpowered.fuel_oil": "重油",
   "block.createpetrolpowered.ghost": "多方块占位符",
   "block.createpetrolpowered.kinetic_input": "应力输入",
   "block.createpetrolpowered.oil_rig": "石油钻机",
   "item.createpetrolpowered.crude_oil_bucket": "石油桶",
+  "item.createpetrolpowered.fuel_oil_bucket": "重油桶",
   "tooltip.createpetrolpowered.oil_rig.biome_not_supported": "该生物群系不含有原油",
   "tooltip.createpetrolpowered.oil_rig.not_rotating": "不在旋转"
 }

@@ -137,6 +137,24 @@ public class Registration {
                             .explosionResistance(100f))
                     .source(ForgeFlowingFluid.Source::new)
                     .bucket()
+                    .model((ctx, prov) -> prov.withExistingParent(ctx.getName(), new ResourceLocation("item/generated"))
+                            .texture("layer0", new ResourceLocation(CreatePetrolPowered.MODID, "item/oil_bucket")))
+                    .build()
+                    .register();
+
+    public static final FluidEntry<ForgeFlowingFluid.Flowing> FUEL_OIL =
+            REGISTRATE.standardFluid("fuel_oil", NoColorFluidAttributes::new)
+                    .lang("Fuel Oil")
+                    .attributes(b -> b.viscosity(2000)
+                            .density(1400))
+                    .properties(p -> p.levelDecreasePerBlock(2)
+                            .tickRate(25)
+                            .slopeFindDistance(3)
+                            .explosionResistance(100f))
+                    .source(ForgeFlowingFluid.Source::new)
+                    .bucket()
+                    .model((ctx, prov) -> prov.withExistingParent(ctx.getName(), new ResourceLocation("item/generated"))
+                            .texture("layer0", new ResourceLocation(CreatePetrolPowered.MODID, "item/oil_bucket")))
                     .build()
                     .register();
 
