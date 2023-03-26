@@ -10,6 +10,7 @@ import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.FluidEntry;
 import net.forsteri.createpetrolpowered.CreatePetrolPowered;
+import net.forsteri.createpetrolpowered.content.BitumenFluidBlock;
 import net.forsteri.createpetrolpowered.content.BurnableOilBucket;
 import net.forsteri.createpetrolpowered.content.distillation.DistillationTankBlock;
 import net.forsteri.createpetrolpowered.content.distillation.DistillationTankItem;
@@ -143,13 +144,32 @@ public class Registration {
                     .build()
                     .register();
 
-    public static final FluidEntry<ForgeFlowingFluid.Flowing> FUEL_OIL =
-            REGISTRATE.standardFluid("fuel_oil", NoColorFluidAttributes::new)
-                    .lang("Fuel Oil")
-                    .attributes(b -> b.viscosity(2000)
-                            .density(1400))
+    public static final FluidEntry<ForgeFlowingFluid.Flowing> BITUMEN =
+            REGISTRATE.standardFluid("bitumen", NoColorFluidAttributes::new)
+                    .lang("Bitumen")
+                    .block(BitumenFluidBlock::new)
+                    .build()
+                    .attributes(b -> b.viscosity(20000)
+                            .density(42000))
                     .properties(p -> p.levelDecreasePerBlock(2)
-                            .tickRate(25)
+                            .tickRate(7115)
+                            .slopeFindDistance(3)
+                            .explosionResistance(100f))
+                    .source(ForgeFlowingFluid.Source::new)
+                    .bucket(BurnableOilBucket::new)
+                    .model((ctx, prov) -> prov.withExistingParent(ctx.getName(), new ResourceLocation("item/generated"))
+                            .texture("layer0", new ResourceLocation(CreatePetrolPowered.MODID, "item/oil_bucket")))
+                    .build()
+                    .register();
+
+    public static final FluidEntry<ForgeFlowingFluid.Flowing> GASOLINE =
+            REGISTRATE.standardFluid("gasoline", TransparentFluidAttributes::new)
+                    .lang("Gasoline")
+                    .attributes(b -> b.viscosity(20000)
+                            .density(42000))
+                    .properties(p -> p.levelDecreasePerBlock(2)
+                            .tickRate(7115)
+                            .levelDecreasePerBlock(4)
                             .slopeFindDistance(3)
                             .explosionResistance(100f))
                     .source(ForgeFlowingFluid.Source::new)
@@ -171,6 +191,19 @@ public class Registration {
         @Override
         public int getColor(BlockAndTintGetter world, BlockPos pos) {
             return 0x00ffffff;
+        }
+
+    }
+
+    private static class TransparentFluidAttributes extends FluidAttributes {
+
+        protected TransparentFluidAttributes(Builder builder, Fluid fluid) {
+            super(builder, fluid);
+        }
+
+        @Override
+        public int getColor(BlockAndTintGetter world, BlockPos pos) {
+            return 0x11ffffff;
         }
 
     }
