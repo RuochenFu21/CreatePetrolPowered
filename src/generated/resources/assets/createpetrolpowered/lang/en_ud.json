@@ -3,11 +3,13 @@
   "block.createpetrolpowered.crude_oil": "\u05DF\u0131O \u01DDpn\u0279\u0186",
   "block.createpetrolpowered.distillation_tank": "\u029Eu\u0250\u27D8 uo\u0131\u0287\u0250\u05DF\u05DF\u0131\u0287s\u0131\u15E1",
   "block.createpetrolpowered.fluid_output": "\u029E\u0254o\u05DFq\u0131\u0287\u05DFnW",
+  "block.createpetrolpowered.gasoline": "\u01DDu\u0131\u05DFos\u0250\u2141",
   "block.createpetrolpowered.ghost": "\u029E\u0254o\u05DFq\u0131\u0287\u05DFnW",
   "block.createpetrolpowered.kinetic_input": "\u0287nduI \u05DF\u0250uo\u0131\u0287\u0250\u0287o\u1D1A \u029E\u0254o\u05DFq\u0131\u0287\u05DFnW",
   "block.createpetrolpowered.oil_rig": "b\u0131\u1D1A bu\u0131\u05DF\u05DF\u0131\u0279\u15E1",
   "item.createpetrolpowered.bitumen_bucket": "\u0287\u01DD\u029E\u0254n\u15FA u\u01DD\u026Fn\u0287\u0131\u15FA",
   "item.createpetrolpowered.crude_oil_bucket": "\u0287\u01DD\u029E\u0254n\u15FA \u05DF\u0131O \u01DDpn\u0279\u0186",
+  "item.createpetrolpowered.gasoline_bucket": "\u0287\u01DD\u029E\u0254n\u15FA \u01DDu\u0131\u05DFos\u0250\u2141",
   "itemGroup.createpetrolpowered": "p\u01DD\u0279\u01DD\u028Do\u0500 \u05DFo\u0279\u0287\u01DD\u0500 :\u01DD\u0287\u0250\u01DD\u0279\u0186",
   "tooltip.createpetrolpowered.oil_rig.biome_not_supported": "b\u0131\u0279 \u05DF\u0131o \u01DD\u0265\u0287 \u028Eq p\u01DD\u0287\u0279oddns \u0287ou s\u0131 \u01DD\u026Fo\u0131q s\u0131\u0265\u27D8",
   "tooltip.createpetrolpowered.oil_rig.not_rotating": "bu\u0131\u0287\u0250\u0287o\u1D1A \u0287oN"

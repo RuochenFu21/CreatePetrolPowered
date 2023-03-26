@@ -167,15 +167,14 @@ public class Registration {
                     .lang("Gasoline")
                     .attributes(b -> b.viscosity(20000)
                             .density(42000))
-                    .properties(p -> p.levelDecreasePerBlock(2)
-                            .tickRate(7115)
-                            .levelDecreasePerBlock(4)
+                    .properties(p -> p.levelDecreasePerBlock(4)
+                            .tickRate(25)
                             .slopeFindDistance(3)
                             .explosionResistance(100f))
                     .source(ForgeFlowingFluid.Source::new)
                     .bucket(BurnableOilBucket::new)
                     .model((ctx, prov) -> prov.withExistingParent(ctx.getName(), new ResourceLocation("item/generated"))
-                            .texture("layer0", new ResourceLocation(CreatePetrolPowered.MODID, "item/oil_bucket")))
+                            .texture("layer0", new ResourceLocation(CreatePetrolPowered.MODID, "item/gasoline_bucket")))
                     .build()
                     .register();
 
@@ -203,7 +202,7 @@ public class Registration {
 
         @Override
         public int getColor(BlockAndTintGetter world, BlockPos pos) {
-            return 0x11ffffff;
+            return 0x00ffffff;
         }
 
     }
