@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "createpetrolpowered:item/natural_gas_bucket"
+  }
+}

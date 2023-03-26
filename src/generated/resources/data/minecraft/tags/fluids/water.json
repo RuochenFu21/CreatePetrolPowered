@@ -6,6 +6,8 @@
     "createpetrolpowered:flowing_bitumen",
     "createpetrolpowered:bitumen",
     "createpetrolpowered:flowing_gasoline",
-    "createpetrolpowered:gasoline"
+    "createpetrolpowered:gasoline",
+    "createpetrolpowered:flowing_natural_gas",
+    "createpetrolpowered:natural_gas"
   ]
 }

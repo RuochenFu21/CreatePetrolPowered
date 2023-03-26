@@ -12,6 +12,7 @@ import com.tterrag.registrate.util.entry.FluidEntry;
 import net.forsteri.createpetrolpowered.CreatePetrolPowered;
 import net.forsteri.createpetrolpowered.content.BitumenFluidBlock;
 import net.forsteri.createpetrolpowered.content.BurnableOilBucket;
+import net.forsteri.createpetrolpowered.content.NaturalGasFluid;
 import net.forsteri.createpetrolpowered.content.distillation.DistillationTankBlock;
 import net.forsteri.createpetrolpowered.content.distillation.DistillationTankItem;
 import net.forsteri.createpetrolpowered.content.distillation.DistillationTankTileEntity;
@@ -175,6 +176,22 @@ public class Registration {
                     .bucket(BurnableOilBucket::new)
                     .model((ctx, prov) -> prov.withExistingParent(ctx.getName(), new ResourceLocation("item/generated"))
                             .texture("layer0", new ResourceLocation(CreatePetrolPowered.MODID, "item/gasoline_bucket")))
+                    .build()
+                    .register();
+
+    public static final FluidEntry<ForgeFlowingFluid.Flowing> NATURAL_GAS =
+            REGISTRATE.standardFluid("natural_gas", TransparentFluidAttributes::new)
+                    .lang("Natural Gas")
+                    .attributes(b -> b.viscosity(20000)
+                            .density(42000))
+                    .properties(p -> p.levelDecreasePerBlock(4)
+                            .tickRate(1)
+                            .slopeFindDistance(3)
+                            .explosionResistance(100f))
+                    .source(NaturalGasFluid.Source::new)
+                    .bucket(BurnableOilBucket::new)
+                    .model((ctx, prov) -> prov.withExistingParent(ctx.getName(), new ResourceLocation("item/generated"))
+                            .texture("layer0", new ResourceLocation(CreatePetrolPowered.MODID, "item/natural_gas_bucket")))
                     .build()
                     .register();
 
