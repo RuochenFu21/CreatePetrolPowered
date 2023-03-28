@@ -1,0 +1,17 @@
+{
+  "type": "create:emptying",
+  "ingredients": [
+    {
+      "item": "createpetrolpowered:natural_gas_bucket"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:bucket"
+    },
+    {
+      "fluid": "createpetrolpowered:natural_gas",
+      "amount": 1000
+    }
+  ]
+}

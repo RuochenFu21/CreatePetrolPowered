@@ -70,7 +70,10 @@ public abstract class MixinFluidTankTileEntity extends SmartTileEntity implement
                             .filter(
                                     distillationRecipe -> {
                                         for (int i = 0; i < distillationRecipe.getFluidResults().size(); i++) {
-                                            if(!distillationRecipe.getFluidResults().get(i).equals(layers.get(i).getFluid(0))){
+                                            if(
+                                                    !distillationRecipe.getFluidResults().get(i).equals(layers.get(i).getFluid(0))
+                                                 && !layers.get(i).getFluid(0).isEmpty()
+                                            ){
                                                 return false;
                                             }
                                         }

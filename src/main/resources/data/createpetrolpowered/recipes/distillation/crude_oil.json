@@ -1,0 +1,24 @@
+{
+  "type": "createpetrolpowered:fractional_distillation",
+  "ingredients": [
+    {
+      "fluid": "createpetrolpowered:crude_oil",
+      "amount": 10
+    }
+  ],
+  "results": [
+    {
+      "fluid": "createpetrolpowered:bitumen",
+      "amount": 3
+    },
+    {
+      "fluid": "createpetrolpowered:gasoline",
+      "amount": 3
+    },
+    {
+      "fluid": "createpetrolpowered:natural_gas",
+      "amount": 4
+    }
+  ],
+  "heatRequirement": "superheated"
+}

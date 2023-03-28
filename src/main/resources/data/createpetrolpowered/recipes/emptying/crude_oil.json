@@ -1,0 +1,17 @@
+{
+  "type": "create:emptying",
+  "ingredients": [
+    {
+      "item": "createpetrolpowered:crude_oil_bucket"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:bucket"
+    },
+    {
+      "fluid": "createpetrolpowered:crude_oil",
+      "amount": 1000
+    }
+  ]
+}
