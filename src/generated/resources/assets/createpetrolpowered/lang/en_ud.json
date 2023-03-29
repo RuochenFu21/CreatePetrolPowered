@@ -1,5 +1,6 @@
 {
   "block.createpetrolpowered.bitumen": "u\u01DD\u026Fn\u0287\u0131\u15FA",
+  "block.createpetrolpowered.bituminous_mixture": "\u01DD\u0279n\u0287x\u0131W snou\u0131\u026Fn\u0287\u0131\u15FA",
   "block.createpetrolpowered.crude_oil": "\u05DF\u0131O \u01DDpn\u0279\u0186",
   "block.createpetrolpowered.distillation_tank": "\u029Eu\u0250\u27D8 uo\u0131\u0287\u0250\u05DF\u05DF\u0131\u0287s\u0131\u15E1",
   "block.createpetrolpowered.fluid_output": "\u029E\u0254o\u05DFq\u0131\u0287\u05DFnW",
@@ -9,6 +10,7 @@
   "block.createpetrolpowered.natural_gas": "s\u0250\u2141 \u05DF\u0250\u0279n\u0287\u0250N",
   "block.createpetrolpowered.oil_rig": "b\u0131\u1D1A bu\u0131\u05DF\u05DF\u0131\u0279\u15E1",
   "item.createpetrolpowered.bitumen_bucket": "\u0287\u01DD\u029E\u0254n\u15FA u\u01DD\u026Fn\u0287\u0131\u15FA",
+  "item.createpetrolpowered.bituminous_mixture_bucket": "\u0287\u01DD\u029E\u0254n\u15FA \u01DD\u0279n\u0287x\u0131W snou\u0131\u026Fn\u0287\u0131\u15FA",
   "item.createpetrolpowered.crude_oil_bucket": "\u0287\u01DD\u029E\u0254n\u15FA \u05DF\u0131O \u01DDpn\u0279\u0186",
   "item.createpetrolpowered.gasoline_bucket": "\u0287\u01DD\u029E\u0254n\u15FA \u01DDu\u0131\u05DFos\u0250\u2141",
   "item.createpetrolpowered.natural_gas_bucket": "\u0287\u01DD\u029E\u0254n\u15FA s\u0250\u2141 \u05DF\u0250\u0279n\u0287\u0250N",

@@ -195,7 +195,23 @@ public class Registration {
                     .build()
                     .register();
 
-
+    public static final FluidEntry<ForgeFlowingFluid.Flowing> BITUMINOUS_MIXTURE =
+            REGISTRATE.standardFluid("bituminous_mixture", TransparentFluidAttributes::new)
+                    .lang("Bituminous Mixture")
+                    .block(BitumenFluidBlock::new)
+                    .build()
+                    .attributes(b -> b.viscosity(20000)
+                            .density(42000))
+                    .properties(p -> p.levelDecreasePerBlock(2)
+                            .tickRate(5335)
+                            .slopeFindDistance(3)
+                            .explosionResistance(100f))
+                    .source(ForgeFlowingFluid.Source::new)
+                    .bucket(BurnableOilBucket::new)
+                    .model((ctx, prov) -> prov.withExistingParent(ctx.getName(), new ResourceLocation("item/generated"))
+                            .texture("layer0", new ResourceLocation(CreatePetrolPowered.MODID, "item/oil_bucket")))
+                    .build()
+                    .register();
 
 
     private static class NoColorFluidAttributes extends FluidAttributes {

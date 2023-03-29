@@ -1,0 +1,28 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "fluidTag": "forge:bitumen",
+      "amount": 1000
+    },
+    {
+      "item": "minecraft:gravel"
+    },
+    {
+      "item": "minecraft:gravel"
+    },
+    {
+      "item": "minecraft:gravel"
+    },
+    {
+      "item": "sand"
+    }
+  ],
+  "results": [
+    {
+      "fluid": "createpetrolpowered:bituminous_mixture",
+      "amount": 1000
+    }
+  ],
+  "heatRequirement": "heated"
+}

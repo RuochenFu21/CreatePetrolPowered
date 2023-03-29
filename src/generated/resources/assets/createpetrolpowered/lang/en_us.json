@@ -1,5 +1,6 @@
 {
   "block.createpetrolpowered.bitumen": "Bitumen",
+  "block.createpetrolpowered.bituminous_mixture": "Bituminous Mixture",
   "block.createpetrolpowered.crude_oil": "Crude Oil",
   "block.createpetrolpowered.distillation_tank": "Distillation Tank",
   "block.createpetrolpowered.fluid_output": "Multiblock",
@@ -9,6 +10,7 @@
   "block.createpetrolpowered.natural_gas": "Natural Gas",
   "block.createpetrolpowered.oil_rig": "Drilling Rig",
   "item.createpetrolpowered.bitumen_bucket": "Bitumen Bucket",
+  "item.createpetrolpowered.bituminous_mixture_bucket": "Bituminous Mixture Bucket",
   "item.createpetrolpowered.crude_oil_bucket": "Crude Oil Bucket",
   "item.createpetrolpowered.gasoline_bucket": "Gasoline Bucket",
   "item.createpetrolpowered.natural_gas_bucket": "Natural Gas Bucket",
