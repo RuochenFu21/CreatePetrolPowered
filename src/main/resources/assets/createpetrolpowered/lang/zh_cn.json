@@ -14,6 +14,6 @@
   "item.createpetrolpowered.bitumen_bucket": "沥青桶",
   "item.createpetrolpowered.gasoline_bucket": "汽油桶",
   "item.createpetrolpowered.natural_gas_bucket": "天然气桶",
-  "tooltip.createpetrolpowered.oil_rig.biome_not_supported": "该生物群系不含有原油",
+  "tooltip.createpetrolpowered.oil_rig.biome_not_supported": "该生物群系不含有石油",
   "tooltip.createpetrolpowered.oil_rig.not_rotating": "不在旋转"
 }
