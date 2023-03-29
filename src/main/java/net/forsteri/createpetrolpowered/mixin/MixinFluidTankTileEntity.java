@@ -107,11 +107,13 @@ public abstract class MixinFluidTankTileEntity extends SmartTileEntity implement
                     layers.get(i).getTankInventory().fill(new FluidStack(recipe.getFluidResults().get(i).getFluid(), recipe.getFluidResults().get(i).getAmount() * speedMultiplier), IFluidHandler.FluidAction.EXECUTE);
                 this.getTankInventory().drain(recipe.getFluidIngredients().get(0).getRequiredAmount() * speedMultiplier, IFluidHandler.FluidAction.EXECUTE);
             }else{
-                for(int i = 0; i < recipe.getFluidResults().size(); i++)
-                    layers.get(i).getTankInventory().fill(new FluidStack(recipe.getFluidResults().get(i).getFluid(),
-                            this.getFluid(0).getAmount() * recipe.getFluidIngredients().get(0).getRequiredAmount()  / recipe.getFluidResults().get(i).getAmount()
-                    ), IFluidHandler.FluidAction.EXECUTE);
-                this.getTankInventory().drain(this.getFluid(0).getAmount(), IFluidHandler.FluidAction.EXECUTE);
+                if (this.getFluid(0).getAmount() != 0) {
+                    for(int i = 0; i < recipe.getFluidResults().size(); i++)
+                        layers.get(i).getTankInventory().fill(new FluidStack(recipe.getFluidResults().get(i).getFluid(),
+                                recipe.getFluidIngredients().get(0).getRequiredAmount() / this.getFluid(0).getAmount() * recipe.getFluidResults().get(i).getAmount()
+                        ), IFluidHandler.FluidAction.EXECUTE);
+                    this.getTankInventory().drain(this.getFluid(0).getAmount(), IFluidHandler.FluidAction.EXECUTE);
+                }
             }
         }
     }

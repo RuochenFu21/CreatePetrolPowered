@@ -1,0 +1,17 @@
+{
+  "type": "create:emptying",
+  "ingredients": [
+    {
+      "item": "createpetrolpowered:bitumen_bucket"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:bucket"
+    },
+    {
+      "fluid": "createpetrolpowered:bitumen",
+      "amount": 1000
+    }
+  ]
+}

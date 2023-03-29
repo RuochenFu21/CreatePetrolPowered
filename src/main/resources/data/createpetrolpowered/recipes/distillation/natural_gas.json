@@ -1,0 +1,24 @@
+{
+  "type": "createpetrolpowered:fractional_distillation",
+  "ingredients": [
+    {
+      "fluidTag": "forge:natural_gas",
+      "amount": 10
+    }
+  ],
+  "results": [
+    {
+      "fluid": "createindustrialchemistry:methane",
+      "amount": 4
+    },
+    {
+      "fluid": "createindustrialchemistry:ethane",
+      "amount": 3
+    },
+    {
+      "fluid": "createindustrialchemistry:propane",
+      "amount": 3
+    }
+  ],
+  "heatRequirement": "superheated"
+}

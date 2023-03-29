@@ -2,22 +2,22 @@
   "type": "createpetrolpowered:fractional_distillation",
   "ingredients": [
     {
-      "fluidTag": "forge:crude_oil",
+      "fluidTag": "forge:gasoline",
       "amount": 10
     }
   ],
   "results": [
     {
-      "fluid": "createpetrolpowered:bitumen",
-      "amount": 3
-    },
-    {
-      "fluid": "createpetrolpowered:gasoline",
-      "amount": 3
-    },
-    {
-      "fluid": "createpetrolpowered:natural_gas",
+      "fluid": "createindustrialchemistry:butane",
       "amount": 4
+    },
+    {
+      "fluid": "createindustrialchemistry:pentane",
+      "amount": 3
+    },
+    {
+      "fluid": "createindustrialchemistry:hexane",
+      "amount": 3
     }
   ],
   "heatRequirement": "superheated"
