@@ -1,4 +1,5 @@
 {
+  "block.createpetrolpowered.asphalt_concrete": "Asphalt Concrete",
   "block.createpetrolpowered.bitumen": "Bitumen",
   "block.createpetrolpowered.bituminous_mixture": "Bituminous Mixture",
   "block.createpetrolpowered.crude_oil": "Crude Oil",
@@ -9,6 +10,7 @@
   "block.createpetrolpowered.kinetic_input": "Multiblock Rotational Input",
   "block.createpetrolpowered.natural_gas": "Natural Gas",
   "block.createpetrolpowered.oil_rig": "Drilling Rig",
+  "create.recipe.fractional_distillation": "Fractional Distillation",
   "item.createpetrolpowered.bitumen_bucket": "Bitumen Bucket",
   "item.createpetrolpowered.bituminous_mixture_bucket": "Bituminous Mixture Bucket",
   "item.createpetrolpowered.crude_oil_bucket": "Crude Oil Bucket",

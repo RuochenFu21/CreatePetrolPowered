@@ -1,6 +1,6 @@
 {
   "itemGroup.createpetrolpowered": "机械动力：石油纪元",
-
+  "block.createpetrolpowered.asphalt_concrete": "沥青混凝土",
   "block.createpetrolpowered.crude_oil": "石油",
   "block.createpetrolpowered.distillation_tank": "分馏储罐",
   "block.createpetrolpowered.fluid_output": "流体输出",
@@ -17,5 +17,6 @@
   "item.createpetrolpowered.gasoline_bucket": "汽油桶",
   "item.createpetrolpowered.natural_gas_bucket": "天然气桶",
   "tooltip.createpetrolpowered.oil_rig.biome_not_supported": "该生物群系不含有石油",
-  "tooltip.createpetrolpowered.oil_rig.not_rotating": "不在旋转"
+  "tooltip.createpetrolpowered.oil_rig.not_rotating": "不在旋转",
+  "create.recipe.fractional_distillation": "分馏"
 }

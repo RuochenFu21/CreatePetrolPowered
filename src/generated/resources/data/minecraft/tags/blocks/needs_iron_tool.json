@@ -4,6 +4,7 @@
     "createpetrolpowered:kinetic_input",
     "createpetrolpowered:ghost",
     "createpetrolpowered:fluid_output",
-    "createpetrolpowered:oil_rig"
+    "createpetrolpowered:oil_rig",
+    "createpetrolpowered:asphalt_concrete"
   ]
 }

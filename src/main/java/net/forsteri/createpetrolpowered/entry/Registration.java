@@ -32,11 +32,15 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.BlockAndTintGetter;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.Material;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 
+import static com.simibubi.create.foundation.data.BlockStateGen.simpleCubeAll;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
 
@@ -213,6 +217,17 @@ public class Registration {
                     .build()
                     .register();
 
+    public static final BlockEntry<Block> ASPHALT_CONCRETE = REGISTRATE
+            .block("asphalt_concrete", Block::new)
+            .initialProperties(Material.STONE)
+            .properties(p -> p.strength(2.0F, 6.0F))
+            .tag(BlockTags.NEEDS_IRON_TOOL)
+            .transform(TagGen.pickaxeOnly())
+            .blockstate(simpleCubeAll("asphalt_concrete"))
+            .lang("Asphalt Concrete")
+            .simpleItem()
+            .register();
+
 
     private static class NoColorFluidAttributes extends FluidAttributes {
 
@@ -241,10 +256,8 @@ public class Registration {
     }
 
     public static TranslatableComponent BIOME_NOT_SUPPORTED = REGISTRATE.addRawLang("tooltip.createpetrolpowered.oil_rig.biome_not_supported", "This biome is not supported by the oil rig");
-
     public static TranslatableComponent NO_SPEED = REGISTRATE.addRawLang("tooltip.createpetrolpowered.oil_rig.not_rotating", "Not Rotating");
-
     public static TranslatableComponent MENU = REGISTRATE.addRawLang("itemGroup.createpetrolpowered", "Create: Petrol Powered");
-
+    public static TranslatableComponent FRACTIONAL_DISTILLATION_RECIPE = REGISTRATE.addRawLang("create.recipe.fractional_distillation", "Fractional Distillation");
     public static void register() {}
 }

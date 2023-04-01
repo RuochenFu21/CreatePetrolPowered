@@ -1,0 +1,14 @@
+{
+  "type": "createindustrialchemistry:cooling",
+  "ingredients": [
+    {
+      "fluid": "createpetrolpowered:bituminous_mixture",
+      "amount": 100
+    }
+  ],
+  "results": [
+    {
+      "item": "createpetrolpowered:asphalt_concrete"
+    }
+  ]
+}
