@@ -5,12 +5,16 @@ import com.simibubi.create.content.contraptions.fluids.tank.FluidTankGenerator;
 import com.simibubi.create.content.contraptions.fluids.tank.FluidTankModel;
 import com.simibubi.create.content.contraptions.fluids.tank.FluidTankRenderer;
 import com.simibubi.create.foundation.block.BlockStressDefaults;
-import com.simibubi.create.foundation.data.*;
+import com.simibubi.create.foundation.data.AssetLookup;
+import com.simibubi.create.foundation.data.CreateRegistrate;
+import com.simibubi.create.foundation.data.SharedProperties;
+import com.simibubi.create.foundation.data.TagGen;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.FluidEntry;
 import net.forsteri.createpetrolpowered.CreatePetrolPowered;
 import net.forsteri.createpetrolpowered.content.BitumenFluidBlock;
+import net.forsteri.createpetrolpowered.content.BituminousMixtureFluid;
 import net.forsteri.createpetrolpowered.content.BurnableOilBucket;
 import net.forsteri.createpetrolpowered.content.NaturalGasFluid;
 import net.forsteri.createpetrolpowered.content.distillation.DistillationTankBlock;
@@ -33,7 +37,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Material;
@@ -210,7 +213,7 @@ public class Registration {
                             .tickRate(5335)
                             .slopeFindDistance(3)
                             .explosionResistance(100f))
-                    .source(ForgeFlowingFluid.Source::new)
+                    .source(BituminousMixtureFluid.Source::new)
                     .bucket(BurnableOilBucket::new)
                     .model((ctx, prov) -> prov.withExistingParent(ctx.getName(), new ResourceLocation("item/generated"))
                             .texture("layer0", new ResourceLocation(CreatePetrolPowered.MODID, "item/oil_bucket")))
@@ -220,7 +223,7 @@ public class Registration {
     public static final BlockEntry<Block> ASPHALT_CONCRETE = REGISTRATE
             .block("asphalt_concrete", Block::new)
             .initialProperties(Material.STONE)
-            .properties(p -> p.strength(2.0F, 6.0F))
+            .properties(p -> p.strength(2.0F, 6.0F).speedFactor(1.4f).jumpFactor(1.2f))
             .tag(BlockTags.NEEDS_IRON_TOOL)
             .transform(TagGen.pickaxeOnly())
             .blockstate(simpleCubeAll("asphalt_concrete"))
