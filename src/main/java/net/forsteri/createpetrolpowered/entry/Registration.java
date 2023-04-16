@@ -209,7 +209,7 @@ public class Registration {
     public static final BlockEntry<Block> ASPHALT_CONCRETE = REGISTRATE
             .block("asphalt_concrete", Block::new)
             .initialProperties(Material.STONE)
-            .properties(p -> p.strength(2.0F, 6.0F).speedFactor(1.4f).jumpFactor(1.2f))
+            .properties(p -> p.strength(2.0F, 6.0F).speedFactor(1.2f).jumpFactor(0.9f))
             .tag(BlockTags.NEEDS_IRON_TOOL)
             .transform(TagGen.pickaxeOnly())
             .blockstate(simpleCubeAll("asphalt_concrete"))
@@ -217,6 +217,7 @@ public class Registration {
             .simpleItem()
             .register();
     public static final BlockEntry<DieselFlywheelBlock> DIESEL_FLYWHEEL_BLOCK = REGISTRATE.block("diesel_flywheel", DieselFlywheelBlock::new)
+            .lang("Diesel Engine Flywheel")
             .initialProperties(SharedProperties::softMetal)
             .properties(p -> p.color(MaterialColor.TERRACOTTA_YELLOW))
             .properties(BlockBehaviour.Properties::noOcclusion)
