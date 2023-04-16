@@ -5,10 +5,7 @@ import com.simibubi.create.content.contraptions.fluids.tank.FluidTankGenerator;
 import com.simibubi.create.content.contraptions.fluids.tank.FluidTankModel;
 import com.simibubi.create.content.contraptions.fluids.tank.FluidTankRenderer;
 import com.simibubi.create.foundation.block.BlockStressDefaults;
-import com.simibubi.create.foundation.data.AssetLookup;
-import com.simibubi.create.foundation.data.CreateRegistrate;
-import com.simibubi.create.foundation.data.SharedProperties;
-import com.simibubi.create.foundation.data.TagGen;
+import com.simibubi.create.foundation.data.*;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.FluidEntry;
@@ -17,6 +14,9 @@ import net.forsteri.createpetrolpowered.content.BitumenFluidBlock;
 import net.forsteri.createpetrolpowered.content.BituminousMixtureFluid;
 import net.forsteri.createpetrolpowered.content.BurnableOilBucket;
 import net.forsteri.createpetrolpowered.content.NaturalGasFluid;
+import net.forsteri.createpetrolpowered.content.dielselEngine.dieselFlywheel.DieselFlywheelBlock;
+import net.forsteri.createpetrolpowered.content.dielselEngine.dieselFlywheel.DieselFlywheelInstance;
+import net.forsteri.createpetrolpowered.content.dielselEngine.dieselFlywheel.DieselFlywheelTileEntity;
 import net.forsteri.createpetrolpowered.content.distillation.DistillationTankBlock;
 import net.forsteri.createpetrolpowered.content.distillation.DistillationTankItem;
 import net.forsteri.createpetrolpowered.content.distillation.DistillationTankTileEntity;
@@ -40,18 +40,19 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 
 import static com.simibubi.create.foundation.data.BlockStateGen.simpleCubeAll;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
+import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
 import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
 
 @SuppressWarnings("unused")
 public class Registration {
     private static final CreateRegistrate REGISTRATE = CreatePetrolPowered.registrate()
             .get().creativeModeTab(() -> CreativeModMenu.CREATIVE_MODE_TAB);
-
     public static final BlockEntry<DistillationTankBlock> DISTILLATION_TANK_BLOCK = REGISTRATE.block("distillation_tank", DistillationTankBlock::new)
             .initialProperties(SharedProperties::copperMetal)
             .properties(BlockBehaviour.Properties::noOcclusion)
@@ -63,13 +64,11 @@ public class Registration {
             .model(AssetLookup.customBlockItemModel("_", "block_single_window"))
             .build()
             .register();
-
     public static final BlockEntityEntry<DistillationTankTileEntity> DISTILLATION_TANK_TILE_ENTITY = REGISTRATE
             .tileEntity("distillation_tank", DistillationTankTileEntity::new)
             .validBlocks(Registration.DISTILLATION_TANK_BLOCK)
             .renderer(() -> FluidTankRenderer::new)
             .register();
-
     public static final BlockEntry<KineticInputBlock> KINETIC_INPUT_BLOCK = REGISTRATE.block("kinetic_input", KineticInputBlock::new)
             .initialProperties(SharedProperties::copperMetal)
             .properties(BlockBehaviour.Properties::noOcclusion)
@@ -80,13 +79,11 @@ public class Registration {
             .blockstate((ctx, prov) -> prov.simpleBlock(ctx.getEntry(), prov.models().getExistingFile(new ResourceLocation(CreatePetrolPowered.MODID, "multiblock_ghost"))))
             .lang("Multiblock Rotational Input")
             .register();
-
     public static final BlockEntityEntry<KineticInputTileEntity> KINETIC_INPUT_TILE_ENTITY = REGISTRATE
             .tileEntity("kinetic_input", KineticInputTileEntity::new)
             .instance(() -> KineticInputInstance::new)
             .validBlocks(KINETIC_INPUT_BLOCK)
             .register();
-
     public static final BlockEntry<GhostBlock> GHOST_BLOCK = REGISTRATE.block("ghost", GhostBlock::new)
             .initialProperties(SharedProperties::copperMetal)
             .properties(BlockBehaviour.Properties::noOcclusion)
@@ -96,12 +93,10 @@ public class Registration {
             .blockstate((ctx, prov) -> prov.simpleBlock(ctx.getEntry(), prov.models().getExistingFile(new ResourceLocation(CreatePetrolPowered.MODID, "multiblock_ghost"))))
             .lang("Multiblock")
             .register();
-
     public static final BlockEntityEntry<GhostTileEntity> GHOST_TILE_ENTITY = REGISTRATE
             .tileEntity("ghost", GhostTileEntity::new)
             .validBlocks(GHOST_BLOCK)
             .register();
-
     public static final BlockEntry<FluidOutputBlock> FLUID_OUTPUT_BLOCK = REGISTRATE.block("fluid_output", FluidOutputBlock::new)
             .initialProperties(SharedProperties::copperMetal)
             .properties(BlockBehaviour.Properties::noOcclusion)
@@ -111,12 +106,10 @@ public class Registration {
             .blockstate((ctx, prov) -> prov.simpleBlock(ctx.getEntry(), prov.models().getExistingFile(new ResourceLocation(CreatePetrolPowered.MODID, "multiblock_ghost"))))
             .lang("Multiblock")
             .register();
-
     public static final BlockEntityEntry<FluidOutputTileEntity> FLUID_OUTPUT_TILE_ENTITY = REGISTRATE
             .tileEntity("fluid_output", FluidOutputTileEntity::new)
             .validBlocks(FLUID_OUTPUT_BLOCK)
             .register();
-
     public static final BlockEntry<MasterBlock> MASTER_BLOCK = REGISTRATE.block("oil_rig", MasterBlock::new)
             .initialProperties(SharedProperties::copperMetal)
             .properties(BlockBehaviour.Properties::noOcclusion)
@@ -128,14 +121,12 @@ public class Registration {
             .transform(customItemModel())
             .addLayer(() -> RenderType::translucent)
             .register();
-
     public static final BlockEntityEntry<MasterTileEntity> MASTER_TILE_ENTITY = REGISTRATE
             .tileEntity("oil_rig", MasterTileEntity::new)
             .validBlocks(MASTER_BLOCK)
             .register();
 
     public static final PartialModel ROTATING_PART = new PartialModel(new ResourceLocation(CreatePetrolPowered.MODID, "block/rotating_part"));
-
     public static final FluidEntry<ForgeFlowingFluid.Flowing> CRUDE_OIL =
             REGISTRATE.standardFluid("crude_oil", NoColorFluidAttributes::new)
                     .lang("Crude Oil")
@@ -151,7 +142,6 @@ public class Registration {
                             .texture("layer0", new ResourceLocation(CreatePetrolPowered.MODID, "item/oil_bucket")))
                     .build()
                     .register();
-
     public static final FluidEntry<ForgeFlowingFluid.Flowing> BITUMEN =
             REGISTRATE.standardFluid("bitumen", NoColorFluidAttributes::new)
                     .lang("Bitumen")
@@ -169,7 +159,6 @@ public class Registration {
                             .texture("layer0", new ResourceLocation(CreatePetrolPowered.MODID, "item/oil_bucket")))
                     .build()
                     .register();
-
     public static final FluidEntry<ForgeFlowingFluid.Flowing> GASOLINE =
             REGISTRATE.standardFluid("gasoline", TransparentFluidAttributes::new)
                     .lang("Gasoline")
@@ -185,7 +174,6 @@ public class Registration {
                             .texture("layer0", new ResourceLocation(CreatePetrolPowered.MODID, "item/gasoline_bucket")))
                     .build()
                     .register();
-
     public static final FluidEntry<ForgeFlowingFluid.Flowing> NATURAL_GAS =
             REGISTRATE.standardFluid("natural_gas", TransparentFluidAttributes::new)
                     .lang("Natural Gas")
@@ -201,7 +189,6 @@ public class Registration {
                             .texture("layer0", new ResourceLocation(CreatePetrolPowered.MODID, "item/natural_gas_bucket")))
                     .build()
                     .register();
-
     public static final FluidEntry<ForgeFlowingFluid.Flowing> BITUMINOUS_MIXTURE =
             REGISTRATE.standardFluid("bituminous_mixture", TransparentFluidAttributes::new)
                     .lang("Bituminous Mixture")
@@ -219,7 +206,6 @@ public class Registration {
                             .texture("layer0", new ResourceLocation(CreatePetrolPowered.MODID, "item/oil_bucket")))
                     .build()
                     .register();
-
     public static final BlockEntry<Block> ASPHALT_CONCRETE = REGISTRATE
             .block("asphalt_concrete", Block::new)
             .initialProperties(Material.STONE)
@@ -230,7 +216,22 @@ public class Registration {
             .lang("Asphalt Concrete")
             .simpleItem()
             .register();
+    public static final BlockEntry<DieselFlywheelBlock> DIESEL_FLYWHEEL_BLOCK = REGISTRATE.block("diesel_flywheel", DieselFlywheelBlock::new)
+            .initialProperties(SharedProperties::softMetal)
+            .properties(p -> p.color(MaterialColor.TERRACOTTA_YELLOW))
+            .properties(BlockBehaviour.Properties::noOcclusion)
+            .transform(axeOrPickaxe())
+            .transform(BlockStressDefaults.setNoImpact())
+            .blockstate(BlockStateGen.axisBlockProvider(true))
+            .item()
+            .transform(customItemModel())
+            .register();
 
+    public static final BlockEntityEntry<DieselFlywheelTileEntity> DIESEL_FLYWHEEL_TILE = REGISTRATE
+            .tileEntity("diesel_flywheel", DieselFlywheelTileEntity::new)
+            .instance(() -> DieselFlywheelInstance::new, false)
+            .validBlocks(Registration.DIESEL_FLYWHEEL_BLOCK)
+            .register();
 
     private static class NoColorFluidAttributes extends FluidAttributes {
 
@@ -244,7 +245,6 @@ public class Registration {
         }
 
     }
-
     private static class TransparentFluidAttributes extends FluidAttributes {
 
         protected TransparentFluidAttributes(Builder builder, Fluid fluid) {
@@ -257,7 +257,6 @@ public class Registration {
         }
 
     }
-
     public static TranslatableComponent BIOME_NOT_SUPPORTED = REGISTRATE.addRawLang("tooltip.createpetrolpowered.oil_rig.biome_not_supported", "This biome is not supported by the oil rig");
     public static TranslatableComponent NO_SPEED = REGISTRATE.addRawLang("tooltip.createpetrolpowered.oil_rig.not_rotating", "Not Rotating");
     public static TranslatableComponent MENU = REGISTRATE.addRawLang("itemGroup.createpetrolpowered", "Create: Petrol Powered");

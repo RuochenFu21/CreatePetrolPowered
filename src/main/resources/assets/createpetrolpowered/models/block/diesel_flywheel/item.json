@@ -1,0 +1,18 @@
+{
+	"parent": "createpetrolpowered:block/diesel_flywheel/diesel_flywheel",
+	"loader": "forge:obj",
+	"flip-v": true,
+	"model": "createpetrolpowered:models/block/diesel_flywheel/diesel_flywheel.obj",
+	"display": {
+        "gui": {
+        	"rotation": [ 30, 225, 0 ],
+            "translation": [ 0, 0, 0],
+            "scale":[ 0.4, 0.4, 0.4 ]
+        },
+		"fixed": {
+            "rotation": [ 90, 0, 0 ],
+            "translation": [ 0, 0, 0],
+            "scale":[ 0.4, 0.4, 0.4 ]
+        }
+    }
+}

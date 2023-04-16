@@ -1,0 +1,17 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "createpetrolpowered:block/diesel_flywheel/block",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "createpetrolpowered:block/diesel_flywheel/block"
+    },
+    "axis=z": {
+      "model": "createpetrolpowered:block/diesel_flywheel/block",
+      "x": 90,
+      "y": 180
+    }
+  }
+}
