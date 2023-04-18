@@ -1,6 +1,7 @@
 package net.forsteri.createpetrolpowered.entry;
 
 import com.jozufozu.flywheel.core.PartialModel;
+import com.simibubi.create.AllTags;
 import com.simibubi.create.content.contraptions.fluids.tank.FluidTankGenerator;
 import com.simibubi.create.content.contraptions.fluids.tank.FluidTankModel;
 import com.simibubi.create.content.contraptions.fluids.tank.FluidTankRenderer;
@@ -14,9 +15,12 @@ import net.forsteri.createpetrolpowered.content.BitumenFluidBlock;
 import net.forsteri.createpetrolpowered.content.BituminousMixtureFluid;
 import net.forsteri.createpetrolpowered.content.BurnableOilBucket;
 import net.forsteri.createpetrolpowered.content.NaturalGasFluid;
-import net.forsteri.createpetrolpowered.content.dielselEngine.dieselFlywheel.DieselFlywheelBlock;
-import net.forsteri.createpetrolpowered.content.dielselEngine.dieselFlywheel.DieselFlywheelInstance;
-import net.forsteri.createpetrolpowered.content.dielselEngine.dieselFlywheel.DieselFlywheelTileEntity;
+import net.forsteri.createpetrolpowered.content.dielselEngineParts.dieselEngine.DieselEngineBlock;
+import net.forsteri.createpetrolpowered.content.dielselEngineParts.dieselEngine.DieselEngineTileEntity;
+import net.forsteri.createpetrolpowered.content.dielselEngineParts.dieselFlywheel.DieselFlywheelBlock;
+import net.forsteri.createpetrolpowered.content.dielselEngineParts.dieselFlywheel.DieselFlywheelBlockItem;
+import net.forsteri.createpetrolpowered.content.dielselEngineParts.dieselFlywheel.DieselFlywheelInstance;
+import net.forsteri.createpetrolpowered.content.dielselEngineParts.dieselFlywheel.DieselFlywheelTileEntity;
 import net.forsteri.createpetrolpowered.content.distillation.DistillationTankBlock;
 import net.forsteri.createpetrolpowered.content.distillation.DistillationTankItem;
 import net.forsteri.createpetrolpowered.content.distillation.DistillationTankTileEntity;
@@ -224,7 +228,7 @@ public class Registration {
             .transform(axeOrPickaxe())
             .transform(BlockStressDefaults.setNoImpact())
             .blockstate(BlockStateGen.axisBlockProvider(true))
-            .item()
+            .item(DieselFlywheelBlockItem::new)
             .transform(customItemModel())
             .register();
 
@@ -232,6 +236,24 @@ public class Registration {
             .tileEntity("diesel_flywheel", DieselFlywheelTileEntity::new)
             .instance(() -> DieselFlywheelInstance::new, false)
             .validBlocks(Registration.DIESEL_FLYWHEEL_BLOCK)
+            .register();
+
+    @SuppressWarnings("removal")
+    public static final BlockEntry<DieselEngineBlock> DIESEL_ENGINE_BLOCK = REGISTRATE.block("diesel_engine", DieselEngineBlock::new)
+            .lang("Diesel Engine")
+            .initialProperties(SharedProperties::softMetal)
+            .properties(BlockBehaviour.Properties::noOcclusion)
+            .transform(AllTags.pickaxeOnly())
+            .tag(AllTags.AllBlockTags.BRITTLE.tag)
+            .blockstate(BlockStateGen.horizontalBlockProvider(true))
+            .transform(BlockStressDefaults.setCapacity(1024.0))
+            .item()
+            .transform(customItemModel())
+            .register();
+
+    public static final BlockEntityEntry<DieselEngineTileEntity> DIESEL_ENGINE_TILE = REGISTRATE.tileEntity("diesel_engine", DieselEngineTileEntity::new)
+//            .instance(() -> DieselEngineInstance::new, false)
+            .validBlocks(Registration.DIESEL_ENGINE_BLOCK)
             .register();
 
     private static class NoColorFluidAttributes extends FluidAttributes {

@@ -1,4 +1,4 @@
-package net.forsteri.createpetrolpowered.content.dielselEngine.dieselFlywheel;
+package net.forsteri.createpetrolpowered.content.dielselEngineParts.dieselFlywheel;
 
 import com.simibubi.create.content.contraptions.base.GeneratingKineticTileEntity;
 import com.simibubi.create.foundation.utility.animation.LerpedFloat;

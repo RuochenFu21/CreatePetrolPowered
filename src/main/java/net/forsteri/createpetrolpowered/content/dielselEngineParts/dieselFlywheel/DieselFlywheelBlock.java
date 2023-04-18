@@ -1,8 +1,9 @@
-package net.forsteri.createpetrolpowered.content.dielselEngine.dieselFlywheel;
+package net.forsteri.createpetrolpowered.content.dielselEngineParts.dieselFlywheel;
 
 import com.simibubi.create.AllShapes;
 import com.simibubi.create.content.contraptions.base.RotatedPillarKineticBlock;
 import com.simibubi.create.foundation.block.ITE;
+import net.forsteri.createpetrolpowered.content.dielselEngineParts.dieselEngine.DieselEngineBlock;
 import net.forsteri.createpetrolpowered.entry.Registration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -15,10 +16,37 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DieselFlywheelBlock extends RotatedPillarKineticBlock implements ITE<DieselFlywheelTileEntity> {
 
     public DieselFlywheelBlock(Properties properties) {
         super(properties);
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public boolean canSurvive(BlockState pState, @NotNull LevelReader pLevel, @NotNull BlockPos pPos) {
+        Direction.Axis thisAxis = pState.getValue(AXIS);
+
+        if (thisAxis.isHorizontal()){
+            List<BlockPos> placeCheckRequired = new ArrayList<>();
+
+            for (Direction direction : Direction.values())
+                if (direction.getAxis() == thisAxis)
+                    placeCheckRequired.add(pPos.relative(direction.getClockWise(Direction.Axis.Y)));
+
+            for (BlockPos pos : placeCheckRequired)
+                if (pLevel.getBlockState(pos).getBlock() instanceof DieselEngineBlock)
+                    return false;
+        } else {
+            for (Direction direction : Direction.Plane.HORIZONTAL)
+                if (pLevel.getBlockState(pPos.relative(direction)).getBlock() instanceof DieselEngineBlock)
+                    return false;
+        }
+
+        return true;
     }
 
     @Override

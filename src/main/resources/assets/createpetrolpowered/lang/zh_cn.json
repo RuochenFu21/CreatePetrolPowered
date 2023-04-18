@@ -19,5 +19,6 @@
   "tooltip.createpetrolpowered.oil_rig.biome_not_supported": "该生物群系不含有石油",
   "tooltip.createpetrolpowered.oil_rig.not_rotating": "不在旋转",
   "create.recipe.fractional_distillation": "分馏",
-  "block.createpetrolpowered.diesel_flywheel": "柴油机飞轮"
+  "block.createpetrolpowered.diesel_flywheel": "柴油机飞轮",
+  "block.createpetrolpowered.diesel_engine": "柴油机"
 }
