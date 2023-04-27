@@ -1,0 +1,11 @@
+{
+  "type": "createpetrolpowered:diesel_engine_fuel",
+  "ingredients": [
+    {
+      "fluidTag": "forge:gasoline",
+      "amount": 100
+    }
+  ],
+  "results": [],
+  "kineticEnergy": 384
+}

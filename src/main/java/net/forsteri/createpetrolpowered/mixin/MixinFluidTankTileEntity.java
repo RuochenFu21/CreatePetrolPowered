@@ -9,7 +9,7 @@ import com.simibubi.create.content.contraptions.processing.burner.BlazeBurnerBlo
 import com.simibubi.create.foundation.tileEntity.IMultiTileContainer;
 import com.simibubi.create.foundation.tileEntity.SmartTileEntity;
 import com.simibubi.create.foundation.utility.recipe.RecipeFinder;
-import net.forsteri.createpetrolpowered.content.distillation.DistillationRecipe;
+import net.forsteri.createpetrolpowered.content.distillation.recipe.DistillationRecipe;
 import net.forsteri.createpetrolpowered.content.distillation.DistillationTankTileEntity;
 import net.forsteri.createpetrolpowered.entry.Recipes;
 import net.forsteri.createpetrolpowered.entry.Registration;

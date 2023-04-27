@@ -16,6 +16,7 @@ import net.forsteri.createpetrolpowered.content.BituminousMixtureFluid;
 import net.forsteri.createpetrolpowered.content.BurnableOilBucket;
 import net.forsteri.createpetrolpowered.content.NaturalGasFluid;
 import net.forsteri.createpetrolpowered.content.dielselEngineParts.dieselEngine.DieselEngineBlock;
+import net.forsteri.createpetrolpowered.content.dielselEngineParts.dieselEngine.DieselEngineInstance;
 import net.forsteri.createpetrolpowered.content.dielselEngineParts.dieselEngine.DieselEngineTileEntity;
 import net.forsteri.createpetrolpowered.content.dielselEngineParts.dieselFlywheel.DieselFlywheelBlock;
 import net.forsteri.createpetrolpowered.content.dielselEngineParts.dieselFlywheel.DieselFlywheelBlockItem;
@@ -252,7 +253,7 @@ public class Registration {
             .register();
 
     public static final BlockEntityEntry<DieselEngineTileEntity> DIESEL_ENGINE_TILE = REGISTRATE.tileEntity("diesel_engine", DieselEngineTileEntity::new)
-//            .instance(() -> DieselEngineInstance::new, false)
+            .instance(() -> DieselEngineInstance::new, false)
             .validBlocks(Registration.DIESEL_ENGINE_BLOCK)
             .register();
 

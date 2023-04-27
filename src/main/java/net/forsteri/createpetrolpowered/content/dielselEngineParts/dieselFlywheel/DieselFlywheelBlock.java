@@ -40,10 +40,6 @@ public class DieselFlywheelBlock extends RotatedPillarKineticBlock implements IT
             for (BlockPos pos : placeCheckRequired)
                 if (pLevel.getBlockState(pos).getBlock() instanceof DieselEngineBlock)
                     return false;
-        } else {
-            for (Direction direction : Direction.Plane.HORIZONTAL)
-                if (pLevel.getBlockState(pPos.relative(direction)).getBlock() instanceof DieselEngineBlock)
-                    return false;
         }
 
         return true;

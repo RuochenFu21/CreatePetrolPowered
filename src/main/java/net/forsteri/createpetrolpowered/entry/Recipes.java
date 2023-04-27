@@ -5,7 +5,8 @@ import com.simibubi.create.content.contraptions.processing.ProcessingRecipeSeria
 import com.simibubi.create.foundation.utility.Lang;
 import com.simibubi.create.foundation.utility.recipe.IRecipeTypeInfo;
 import net.forsteri.createpetrolpowered.CreatePetrolPowered;
-import net.forsteri.createpetrolpowered.content.distillation.DistillationRecipe;
+import net.forsteri.createpetrolpowered.content.dielselEngineParts.recipe.EngineRecipe;
+import net.forsteri.createpetrolpowered.content.distillation.recipe.DistillationRecipe;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Recipe;
@@ -21,7 +22,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.Supplier;
 
 public enum Recipes implements IRecipeTypeInfo {
-    FRACTIONAL_DISTILLATION(DistillationRecipe::new);
+    FRACTIONAL_DISTILLATION(DistillationRecipe::new),
+    DIESEL_ENGINE_FUEL(EngineRecipe::new);
 
     private final ResourceLocation id;
     private final RegistryObject<RecipeSerializer<?>> serializerObject;
