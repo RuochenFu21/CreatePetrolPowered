@@ -1,4 +1,4 @@
-package net.forsteri.createpetrolpowered.content.dielselEngine.dieselFlywheel;
+package net.forsteri.createpetrolpowered.content.dielselEngineParts.dieselFlywheel;
 
 import com.jozufozu.flywheel.api.MaterialManager;
 import com.jozufozu.flywheel.api.instance.DynamicInstance;

@@ -1,4 +1,4 @@
-package net.forsteri.createpetrolpowered.compact.jei;
+package net.forsteri.createpetrolpowered.content.distillation.recipe;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
@@ -13,7 +13,6 @@ import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
-import net.forsteri.createpetrolpowered.content.distillation.DistillationRecipe;
 import net.forsteri.createpetrolpowered.entry.GuiTextures;
 import org.jetbrains.annotations.NotNull;
 

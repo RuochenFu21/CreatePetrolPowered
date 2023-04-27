@@ -3,6 +3,7 @@
   "block.createpetrolpowered.bitumen": "Bitumen",
   "block.createpetrolpowered.bituminous_mixture": "Bituminous Mixture",
   "block.createpetrolpowered.crude_oil": "Crude Oil",
+  "block.createpetrolpowered.diesel_engine": "Diesel Engine",
   "block.createpetrolpowered.diesel_flywheel": "Diesel Engine Flywheel",
   "block.createpetrolpowered.distillation_tank": "Distillation Tank",
   "block.createpetrolpowered.fluid_output": "Multiblock",

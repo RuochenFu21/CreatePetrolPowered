@@ -1,4 +1,4 @@
-package net.forsteri.createpetrolpowered.content.distillation;
+package net.forsteri.createpetrolpowered.content.distillation.recipe;
 
 import com.simibubi.create.content.contraptions.processing.HeatCondition;
 import com.simibubi.create.content.contraptions.processing.ProcessingRecipe;

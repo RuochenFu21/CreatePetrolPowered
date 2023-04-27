@@ -7,6 +7,7 @@
     "createpetrolpowered:fluid_output",
     "createpetrolpowered:oil_rig",
     "createpetrolpowered:asphalt_concrete",
-    "createpetrolpowered:diesel_flywheel"
+    "createpetrolpowered:diesel_flywheel",
+    "createpetrolpowered:diesel_engine"
   ]
 }
