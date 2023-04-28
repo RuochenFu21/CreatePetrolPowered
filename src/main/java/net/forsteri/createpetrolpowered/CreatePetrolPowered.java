@@ -26,7 +26,7 @@ public class CreatePetrolPowered {
     public static final NonNullSupplier<CreateRegistrate> REGISTRATE = CreateRegistrate.lazy(CreatePetrolPowered.MODID);
 
     // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
+    protected static final Logger LOGGER = LogUtils.getLogger();
 
     public CreatePetrolPowered() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();

@@ -3,7 +3,7 @@
   "ingredients": [
     {
       "fluidTag": "forge:natural_gas",
-      "amount": 100
+      "amount": 20
     }
   ],
   "results": [],

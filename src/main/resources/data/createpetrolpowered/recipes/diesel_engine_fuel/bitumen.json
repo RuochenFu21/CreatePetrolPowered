@@ -3,7 +3,7 @@
   "ingredients": [
     {
       "fluidTag": "forge:bitumen",
-      "amount": 100
+      "amount": 20
     }
   ],
   "results": [],
