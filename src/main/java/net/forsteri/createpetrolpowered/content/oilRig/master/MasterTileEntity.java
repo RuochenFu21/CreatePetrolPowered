@@ -12,6 +12,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
@@ -66,6 +67,18 @@ public class MasterTileEntity extends SmartTileEntity implements IHaveGoggleInfo
     @Override
     public void remove() {
         super.remove();
+
+        assert level != null;
+        var item = new ItemEntity(
+                level,
+                worldPosition.getX(),
+                worldPosition.getY(),
+                worldPosition.getZ(),
+                Registration.MASTER_BLOCK.asStack()
+        );
+
+        level.addFreshEntity(item);
+
         for(SmartTileEntity slaveTileEntity : slaveTileEntities){
             Objects.requireNonNull(slaveTileEntity.getLevel()).removeBlock(slaveTileEntity.getBlockPos(), false);
         }
@@ -110,7 +123,7 @@ public class MasterTileEntity extends SmartTileEntity implements IHaveGoggleInfo
         if(canBeUsed())
             for(SmartTileEntity slaveTileEntity : slaveTileEntities)
                 if(slaveTileEntity instanceof FluidOutputTileEntity)
-                    ((FluidOutputTileEntity) slaveTileEntity).getInventory().fill(new FluidStack(Registration.CRUDE_OIL.get(), 10), IFluidHandler.FluidAction.EXECUTE);
+                    ((FluidOutputTileEntity) slaveTileEntity).getInventory().fill(new FluidStack(Registration.CRUDE_OIL.get().getSource(), 10), IFluidHandler.FluidAction.EXECUTE);
 
     }
 

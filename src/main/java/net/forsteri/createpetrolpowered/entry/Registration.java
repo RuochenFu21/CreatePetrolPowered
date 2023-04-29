@@ -40,6 +40,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -94,7 +95,7 @@ public class Registration {
             .properties(BlockBehaviour.Properties::noOcclusion)
             .tag(BlockTags.NEEDS_IRON_TOOL)
             .transform(TagGen.pickaxeOnly())
-            .addLayer(() -> RenderType::cutoutMipped)
+            .addLayer(() -> RenderType::translucent)
             .blockstate((ctx, prov) -> prov.simpleBlock(ctx.getEntry(), prov.models().getExistingFile(new ResourceLocation(CreatePetrolPowered.MODID, "multiblock_ghost"))))
             .lang("Multiblock")
             .register();
@@ -122,6 +123,7 @@ public class Registration {
             .transform(TagGen.pickaxeOnly())
             .blockstate((ctx, prov) -> prov.horizontalBlock(ctx.getEntry(), prov.models().getExistingFile(new ResourceLocation(CreatePetrolPowered.MODID, "oil_rig"))))
             .lang("Drilling Rig")
+            .loot((p, b) -> p.dropOther(b, Items.AIR))
             .item(OilRigItem::new)
             .transform(customItemModel())
             .addLayer(() -> RenderType::translucent)

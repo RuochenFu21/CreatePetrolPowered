@@ -5,6 +5,7 @@ import com.simibubi.create.foundation.block.ITE;
 import net.forsteri.createpetrolpowered.entry.Registration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
@@ -58,5 +59,9 @@ public class MasterBlock extends HorizontalDirectionalBlock implements IWrenchab
         return this.defaultBlockState()
                 .setValue(FACING, context.getHorizontalDirection()
                         .getOpposite());
+    }
+
+    public boolean propagatesSkylightDown(BlockState pState, BlockGetter pReader, BlockPos pPos) {
+        return true;
     }
 }

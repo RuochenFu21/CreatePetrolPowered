@@ -5,7 +5,6 @@ import net.forsteri.createpetrolpowered.content.oilRig.master.MasterTileEntity;
 import net.minecraft.network.chat.Component;
 
 import java.util.List;
-import java.util.Objects;
 
 public interface ISlaveTileEntity extends IHaveGoggleInformation {
 
@@ -16,8 +15,23 @@ public interface ISlaveTileEntity extends IHaveGoggleInformation {
 
 
     default void onRemove(){
-        if(getMasterTileEntity() != null)
-            Objects.requireNonNull(getMasterTileEntity().getLevel()).removeBlock(getMasterTileEntity().getBlockPos(), false);
+        if (getMasterTileEntity() == null)
+            return;
+
+        if (getMasterTileEntity().getLevel() == null)
+            return;
+
+        getMasterTileEntity().getLevel().removeBlock(getMasterTileEntity().getBlockPos(), false);
+//
+//            var item = new ItemEntity(
+//                    getMasterTileEntity().getLevel(),
+//                    getMasterTileEntity().getBlockPos().getX(),
+//                    getMasterTileEntity().getBlockPos().getY(),
+//                    getMasterTileEntity().getBlockPos().getZ(),
+//                    Registration.MASTER_BLOCK.asStack()
+//            );
+//
+//            getMasterTileEntity().getLevel().addFreshEntity(item);
     }
 
     @Override

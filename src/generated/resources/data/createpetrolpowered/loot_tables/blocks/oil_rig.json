@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "createpetrolpowered:oil_rig"
+          "name": "minecraft:air"
         }
       ],
       "conditions": [
