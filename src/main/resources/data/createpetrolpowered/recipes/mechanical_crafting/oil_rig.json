@@ -1,0 +1,23 @@
+{
+  "type": "create:mechanical_crafting",
+  "pattern": [
+    "MCH",
+    " M ",
+    "CC "
+  ],
+  "key": {
+    "C": {
+      "item": "create:brass_casing"
+    },
+    "M": {
+      "item": "create:metal_girder"
+    },
+    "H": {
+      "item": "create:hose_pulley"
+    }
+  },
+  "result": {
+    "item": "createpetrolpowered:oil_rig"
+  },
+  "acceptMirrored": true
+}

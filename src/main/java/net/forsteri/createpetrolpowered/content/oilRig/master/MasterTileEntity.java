@@ -9,11 +9,9 @@ import net.forsteri.createpetrolpowered.content.oilRig.util.ISlaveTileEntity;
 import net.forsteri.createpetrolpowered.entry.Registration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -24,7 +22,6 @@ import net.minecraftforge.fluids.capability.IFluidHandler;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.function.Function;
 
 import static net.minecraft.world.level.block.HorizontalDirectionalBlock.FACING;
 
@@ -43,6 +40,9 @@ public class MasterTileEntity extends SmartTileEntity implements IHaveGoggleInfo
     List<SmartTileEntity> slaveTileEntities = new ArrayList<>();
 
     protected void initializeSlaves(){
+        if (level == null)
+            return;
+
         BlockState state = getBlockState();
 
         List<BlockPos> SlavePosList = new ArrayList<>();
@@ -56,6 +56,13 @@ public class MasterTileEntity extends SmartTileEntity implements IHaveGoggleInfo
         SlavePosList.add(worldPosition.relative(state.getValue(FACING).getOpposite()).above());
 
         for (BlockPos slavePos : SlavePosList) {
+            if (level.getBlockEntity(slavePos) == null) {
+                return;
+            }
+        }
+
+        for (BlockPos slavePos : SlavePosList) {
+
             if (level != null) {
                 ((ISlaveTileEntity) Objects.requireNonNull(level.getBlockEntity(slavePos))).setMasterTileEntity(this);
             }
@@ -83,43 +90,12 @@ public class MasterTileEntity extends SmartTileEntity implements IHaveGoggleInfo
             Objects.requireNonNull(slaveTileEntity.getLevel()).removeBlock(slaveTileEntity.getBlockPos(), false);
         }
     }
-
-    @Override
-    protected void write(CompoundTag compound, boolean clientPacket) {
-        compound.putIntArray("slaveTileEntitiesX", slaveTileEntities.stream().mapToInt(tileEntity -> tileEntity.getBlockPos().getX()).toArray());
-        compound.putIntArray("slaveTileEntitiesY", slaveTileEntities.stream().mapToInt(tileEntity -> tileEntity.getBlockPos().getY()).toArray());
-        compound.putIntArray("slaveTileEntitiesZ", slaveTileEntities.stream().mapToInt(tileEntity -> tileEntity.getBlockPos().getZ()).toArray());
-        super.write(compound, clientPacket);
-    }
-
-    @Override
-    protected void read(CompoundTag compound, boolean clientPacket) {
-        if(compound.contains("slaveTileEntitiesX") && compound.contains("slaveTileEntitiesY") && compound.contains("slaveTileEntitiesZ"))
-            slaveTileEntitiesGetter = (level) ->
-        {
-            List<SmartTileEntity> ret = new ArrayList<>();
-            for (int i = 0; i < compound.getIntArray("slaveTileEntitiesX").length; i++)
-                ret.add(
-                        (SmartTileEntity)
-                                level.getBlockEntity(new BlockPos(
-                                        compound.getIntArray("slaveTileEntitiesX")[i],
-                                        compound.getIntArray("slaveTileEntitiesY")[i],
-                                        compound.getIntArray("slaveTileEntitiesZ")[i])));
-            return ret;
-        };
-
-        super.read(compound, clientPacket);
-    }
-
-    public Function<Level,List<SmartTileEntity>> slaveTileEntitiesGetter;
-
     @Override
     public void tick() {
-        if(slaveTileEntitiesGetter != null && slaveTileEntities.isEmpty()) {
-            slaveTileEntities = slaveTileEntitiesGetter.apply(level);
-            slaveTileEntitiesGetter = null;
-        }
         super.tick();
+        if (slaveTileEntities.isEmpty())
+            initializeSlaves();
+
         if(canBeUsed())
             for(SmartTileEntity slaveTileEntity : slaveTileEntities)
                 if(slaveTileEntity instanceof FluidOutputTileEntity)

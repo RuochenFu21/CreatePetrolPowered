@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X"
+  ],
+  "key": {
+    "X": {
+      "item": "create:fluid_tank"
+    }
+  },
+  "result": {
+    "item": "createpetrolpowered:distillation_tank"
+  }
+}

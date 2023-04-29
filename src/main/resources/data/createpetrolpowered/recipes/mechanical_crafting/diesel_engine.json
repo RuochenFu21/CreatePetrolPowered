@@ -1,0 +1,23 @@
+{
+  "type": "create:mechanical_crafting",
+  "pattern": [
+    "PPS",
+    "PIP",
+    "PPS"
+  ],
+  "key": {
+    "P": {
+      "item": "create:sturdy_sheet"
+    },
+    "S": {
+      "item": "create:shaft"
+    },
+    "I": {
+      "item": "minecraft:piston"
+    }
+  },
+  "result": {
+    "item": "createpetrolpowered:diesel_engine"
+  },
+  "acceptMirrored": true
+}

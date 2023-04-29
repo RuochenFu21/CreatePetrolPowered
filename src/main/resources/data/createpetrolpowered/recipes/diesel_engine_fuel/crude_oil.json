@@ -3,7 +3,7 @@
   "ingredients": [
     {
       "fluidTag": "forge:crude_oil",
-      "amount": 20
+      "amount": 10
     }
   ],
   "results": [],

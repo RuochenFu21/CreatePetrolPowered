@@ -1,0 +1,22 @@
+{
+  "type": "create:mechanical_crafting",
+  "pattern": [
+    " PPP ",
+    "PSSSP",
+    "PSPSP",
+    "PSSSP",
+    " PPP "
+  ],
+  "key": {
+    "P": {
+      "item": "create:sturdy_sheet"
+    },
+    "S": {
+      "item": "create:shaft"
+    }
+  },
+  "result": {
+    "item": "createpetrolpowered:diesel_flywheel"
+  },
+  "acceptMirrored": false
+}
